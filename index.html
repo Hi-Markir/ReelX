@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dr. Emma Wilson | Cosmetic & Implant Dentist</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -21,16 +22,18 @@ html{
 
 body{
     background:#f8fbfd;
-    color:#333;
+    color:#222;
+    overflow-x:hidden;
 }
 
 header{
     position:fixed;
-    width:100%;
     top:0;
-    z-index:1000;
-    background:white;
-    box-shadow:0 2px 20px rgba(0,0,0,.08);
+    width:100%;
+    z-index:999;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(12px);
+    box-shadow:0 2px 15px rgba(0,0,0,.08);
 }
 
 .navbar{
@@ -39,13 +42,13 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:20px;
+    padding:18px 30px;
 }
 
 .logo{
-    font-size:24px;
-    font-weight:700;
-    color:#0077b6;
+    font-size:26px;
+    font-weight:800;
+    color:#0088cc;
 }
 
 .nav-links{
@@ -61,42 +64,42 @@ header{
 
 .hero{
     min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
     background:
-    linear-gradient(rgba(0,119,182,.85),
-    rgba(0,119,182,.85)),
-    url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80');
+    linear-gradient(rgba(0,40,70,.55),rgba(0,40,70,.55)),
+    url('https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1800&q=80');
     background-size:cover;
     background-position:center;
-    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
     text-align:center;
-    padding:100px 20px;
+    color:white;
+    padding:20px;
 }
 
 .hero-content{
-    max-width:800px;
+    max-width:850px;
 }
 
 .hero h1{
     font-size:4rem;
+    line-height:1.1;
     margin-bottom:20px;
 }
 
 .hero p{
-    font-size:1.2rem;
-    margin-bottom:30px;
+    font-size:1.25rem;
+    margin-bottom:35px;
 }
 
 .btn{
     display:inline-block;
     padding:15px 35px;
     background:white;
-    color:#0077b6;
-    text-decoration:none;
+    color:#0088cc;
     border-radius:50px;
-    font-weight:600;
+    text-decoration:none;
+    font-weight:700;
     transition:.3s;
 }
 
@@ -114,25 +117,31 @@ section{
 }
 
 .section-title h2{
-    color:#0077b6;
-    font-size:2.5rem;
+    color:#0088cc;
+    font-size:2.8rem;
+    margin-bottom:10px;
 }
 
 .about{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:50px;
+    gap:60px;
     align-items:center;
 }
 
 .about img{
     width:100%;
-    border-radius:20px;
+    border-radius:25px;
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
 }
 
 .about-text h3{
     font-size:2rem;
     margin-bottom:20px;
+}
+
+.about-text p{
+    line-height:1.8;
 }
 
 .services{
@@ -143,8 +152,8 @@ section{
 
 .card{
     background:white;
-    padding:30px;
     border-radius:20px;
+    padding:30px;
     box-shadow:0 10px 30px rgba(0,0,0,.08);
     transition:.3s;
 }
@@ -154,12 +163,12 @@ section{
 }
 
 .card h3{
-    color:#0077b6;
+    color:#0088cc;
     margin-bottom:15px;
 }
 
-.experience{
-    background:#0077b6;
+.stats-section{
+    background:#0088cc;
     color:white;
     text-align:center;
 }
@@ -168,11 +177,33 @@ section{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
     gap:30px;
-    margin-top:40px;
+    margin-top:50px;
 }
 
 .stat h3{
     font-size:3rem;
+}
+
+.gallery{
+    background:#f4f9fc;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.gallery-grid img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    border-radius:20px;
+    transition:.4s;
+}
+
+.gallery-grid img:hover{
+    transform:scale(1.04);
 }
 
 .testimonials{
@@ -181,30 +212,30 @@ section{
     gap:25px;
 }
 
-.testimonial{
+.review{
     background:white;
-    padding:30px;
     border-radius:20px;
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    padding:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.review h4{
+    margin-top:15px;
+    color:#0088cc;
 }
 
 .contact{
+    background:#0c2340;
+    color:white;
     text-align:center;
-    background:#f0f8fc;
 }
 
-.contact-box{
-    max-width:700px;
-    margin:auto;
-}
-
-.contact-info{
-    margin-top:20px;
-    font-size:1.1rem;
+.contact p{
+    margin:12px 0;
 }
 
 footer{
-    background:#023e8a;
+    background:#07162a;
     color:white;
     text-align:center;
     padding:25px;
@@ -223,7 +254,9 @@ footer{
 .nav-links{
     display:none;
 }
+
 }
+
 </style>
 </head>
 <body>
@@ -235,7 +268,7 @@ footer{
 <div class="nav-links">
 <a href="#about">About</a>
 <a href="#services">Services</a>
-<a href="#implants">Implants</a>
+<a href="#gallery">Gallery</a>
 <a href="#reviews">Reviews</a>
 <a href="#contact">Contact</a>
 </div>
@@ -244,48 +277,53 @@ footer{
 
 <section class="hero">
 <div class="hero-content">
-<h1>Beautiful Smiles Start Here</h1>
+
+<h1>Creating Beautiful Smiles With Confidence</h1>
 
 <p>
-Expert Cosmetic & Implant Dentistry with Over
-25 Years of Experience.
+Premium Cosmetic Dentistry, Dental Implants &
+Smile Makeovers With Over 25 Years Of Experience.
 </p>
 
 <a href="#contact" class="btn">
-Book Appointment
+Book Consultation
 </a>
+
 </div>
 </section>
 
 <section id="about">
 
 <div class="section-title">
-<h2>Meet Your Dentist</h2>
+<h2>Meet Dr. Emma Wilson</h2>
+<p>Trusted Cosmetic & Implant Dentist</p>
 </div>
 
 <div class="about">
 
-<img src="dentist-female.jpg" alt="Female Dentist">
+<img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=1200&q=80">
 
 <div class="about-text">
-<h3>Dr. Emma Wilson DDS</h3>
+
+<h3>25+ Years of Excellence</h3>
 
 <p>
-With more than 25 years of clinical experience,
-Dr. Wilson specializes in cosmetic dentistry,
-dental implants, smile makeovers and advanced
-restorative treatments.
+Dr. Emma Wilson has dedicated her career to helping
+patients achieve healthy and confident smiles through
+advanced cosmetic dentistry, dental implants, and
+modern restorative treatments.
 </p>
 
 <br>
 
 <p>
-Her mission is to provide comfortable,
-modern dental care using the latest
-technology and personalized treatment plans.
+Her commitment to patient comfort and cutting-edge
+technology has earned the trust of thousands of
+patients.
 </p>
 
 </div>
+
 </div>
 
 </section>
@@ -294,42 +332,38 @@ technology and personalized treatment plans.
 
 <div class="section-title">
 <h2>Our Services</h2>
+<p>Comprehensive Dental Care</p>
 </div>
 
 <div class="services">
 
 <div class="card">
 <h3>Dental Implants</h3>
-<p>Permanent replacement for missing teeth.</p>
+<p>Permanent solutions for missing teeth.</p>
 </div>
 
 <div class="card">
-<h3>Cosmetic Dentistry</h3>
-<p>Veneers, whitening and smile makeovers.</p>
+<h3>Smile Makeovers</h3>
+<p>Transform your smile with modern techniques.</p>
 </div>
 
 <div class="card">
-<h3>General Dentistry</h3>
-<p>Routine exams, cleaning and fillings.</p>
+<h3>Teeth Whitening</h3>
+<p>Professional whitening for brighter smiles.</p>
 </div>
 
 <div class="card">
-<h3>Emergency Care</h3>
-<p>Same-day appointments for urgent issues.</p>
+<h3>Emergency Dentistry</h3>
+<p>Fast and compassionate emergency treatment.</p>
 </div>
 
 </div>
 
 </section>
 
-<section id="implants" class="experience">
+<section class="stats-section">
 
-<h2>Dental Implant Excellence</h2>
-
-<p>
-State-of-the-art implant procedures restoring
-confidence and function.
-</p>
+<h2>Experience You Can Trust</h2>
 
 <div class="stats">
 
@@ -348,6 +382,36 @@ confidence and function.
 <p>Implants Placed</p>
 </div>
 
+<div class="stat">
+<h3>99%</h3>
+<p>Patient Satisfaction</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="gallery" class="gallery">
+
+<div class="section-title">
+<h2>Smile Gallery</h2>
+<p>Healthy Smiles, Happy Patients</p>
+</div>
+
+<div class="gallery-grid">
+
+<img src="https://images.unsplash.com/photo-1594824388853-d0c4c4b0fcb4?auto=format&fit=crop&w=1200&q=80">
+
+<img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80">
+
+<img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80">
+
+<img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80">
+
+<img src="https://images.unsplash.com/photo-1612277795421-9bc7706a4a41?auto=format&fit=crop&w=1200&q=80">
+
+<img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1200&q=80">
+
 </div>
 
 </section>
@@ -360,33 +424,31 @@ confidence and function.
 
 <div class="testimonials">
 
-<div class="testimonial">
+<div class="review">
 ⭐⭐⭐⭐⭐
 <p>
-"Outstanding experience. My implant feels
-completely natural."
+Excellent service and a wonderful team. My implant
+procedure was smooth and painless.
 </p>
-<br>
-<strong>— Sarah M.</strong>
+<h4>Sarah M.</h4>
 </div>
 
-<div class="testimonial">
+<div class="review">
 ⭐⭐⭐⭐⭐
 <p>
-"Professional, caring, and highly skilled.
-I love my new smile."
+The best dental clinic I've visited. Professional,
+friendly and modern.
 </p>
-<br>
-<strong>— Michael R.</strong>
+<h4>Michael R.</h4>
 </div>
 
-<div class="testimonial">
+<div class="review">
 ⭐⭐⭐⭐⭐
 <p>
-"The best dental clinic I've ever visited."
+I finally have the smile I always wanted. Highly
+recommended.
 </p>
-<br>
-<strong>— Jessica T.</strong>
+<h4>Jessica T.</h4>
 </div>
 
 </div>
@@ -395,30 +457,19 @@ I love my new smile."
 
 <section id="contact" class="contact">
 
-<div class="contact-box">
-
 <div class="section-title">
-<h2>Book Your Consultation</h2>
+<h2 style="color:white">Book Your Appointment</h2>
 </div>
 
-<p>
-Ready for a healthier, more beautiful smile?
-Contact us today.
-</p>
-
-<div class="contact-info">
-📞 +1 (555) 123-4567<br>
-📧 info@smilecare.com<br>
-📍 123 Main Street, Your City
-</div>
+<p>📞 +1 (555) 123-4567</p>
+<p>📧 info@smilecaredental.com</p>
+<p>📍 123 Main Street, Your City</p>
 
 <br>
 
-<a href="mailto:info@smilecare.com" class="btn">
-Contact Now
+<a href="mailto:info@smilecaredental.com" class="btn">
+Contact Us
 </a>
-
-</div>
 
 </section>
 
