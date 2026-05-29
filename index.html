@@ -1,850 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DentCare Pro | Professional Dental Clinic</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #00a8cc;
-            --primary-dark: #008ba3;
-            --secondary: #0077b6;
-            --accent: #00b4d8;
-            --light: #caf0f8;
-            --white: #ffffff;
-            --dark: #023e8a;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --gray: #f1f5f9;
-            --shadow: 0 4px 20px rgba(0,0,0,0.08);
-            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
-            --radius: 16px;
-            --transition: all 0.3s ease;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Emma Wilson | Cosmetic & Implant Dentist</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--white);
-            overflow-x: hidden;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-        /* ========== BUTTONS ========== */
-        .btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 14px 32px; border-radius: 50px;
-            font-weight: 600; font-size: 15px;
-            text-decoration: none; border: none; cursor: pointer;
-            transition: var(--transition);
-        }
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white);
-            box-shadow: 0 4px 15px rgba(0, 168, 204, 0.3);
-        }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 168, 204, 0.4);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        .btn-outline:hover {
-            background: var(--primary);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        /* ========== HEADER ========== */
-        header {
-            position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: var(--white);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        header.scrolled { padding: 8px 0; }
-        .nav-container {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 18px 0;
-        }
-        .logo {
-            font-size: 26px; font-weight: 800; color: var(--dark);
-            text-decoration: none; display: flex; align-items: center; gap: 8px;
-        }
-        .logo i { color: var(--primary); font-size: 28px; }
-        .logo span { color: var(--primary); }
-        
-        .nav-links { display: flex; list-style: none; gap: 36px; align-items: center; }
-        .nav-links a {
-            font-weight: 500; color: var(--text); text-decoration: none;
-            transition: var(--transition); position: relative; font-size: 15px;
-        }
-        .nav-links a:hover { color: var(--primary); }
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: -6px; left: 0;
-            width: 0; height: 2px; background: var(--primary);
-            transition: var(--transition);
-        }
-        .nav-links a:hover::after { width: 100%; }
-        
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
-        .hamburger span { width: 26px; height: 3px; background: var(--text); border-radius: 2px; }
+body{
+    background:#f8fbfd;
+    color:#333;
+}
 
-        /* ========== HERO ========== */
-        .hero {
-            margin-top: 80px; padding: 100px 0;
-            background: linear-gradient(135deg, var(--light) 0%, var(--white) 100%);
-            position: relative; overflow: hidden;
-        }
-        .hero::before {
-            content: ''; position: absolute; top: -30%; right: -20%;
-            width: 700px; height: 700px;
-            background: radial-gradient(circle, rgba(0,168,204,0.08) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .hero-content {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
-            align-items: center; position: relative; z-index: 1;
-        }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: var(--white); padding: 8px 20px; border-radius: 50px;
-            font-size: 14px; font-weight: 600; color: var(--primary);
-            margin-bottom: 24px; box-shadow: var(--shadow);
-        }
-        .hero h1 {
-            font-size: 52px; font-weight: 800; line-height: 1.1;
-            margin-bottom: 24px; color: var(--dark);
-        }
-        .hero h1 span { color: var(--primary); }
-        .hero p {
-            font-size: 18px; color: var(--text-light);
-            margin-bottom: 32px; line-height: 1.8; max-width: 520px;
-        }
-        .hero-buttons { display: flex; gap: 16px; margin-bottom: 40px; }
-        .hero-stats { display: flex; gap: 40px; }
-        .stat h3 { font-size: 32px; font-weight: 800; color: var(--primary); }
-        .stat p { font-size: 14px; color: var(--text-light); margin: 0; }
-        
-        .hero-image { position: relative; }
-        .hero-image img {
-            width: 100%; border-radius: 24px;
-            box-shadow: var(--shadow-lg);
-        }
-        .floating-card {
-            position: absolute; background: var(--white);
-            padding: 18px 22px; border-radius: var(--radius);
-            box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 12px;
-            animation: float 3s ease-in-out infinite;
-        }
-        .fc-1 { top: 15%; left: -25px; animation-delay: 0s; }
-        .fc-2 { bottom: 20%; right: -20px; animation-delay: 1.5s; }
-        .fc-icon {
-            width: 44px; height: 44px; background: var(--light);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: var(--primary); font-size: 18px;
-        }
-        .fc-text h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin: 0; }
-        .fc-text p { font-size: 12px; color: var(--text-light); margin: 0; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    background:white;
+    box-shadow:0 2px 20px rgba(0,0,0,.08);
+}
 
-        /* ========== FEATURES BAR ========== */
-        .features-bar {
-            background: var(--white); padding: 30px 0; margin-top: -40px;
-            position: relative; z-index: 100; box-shadow: var(--shadow);
-            border-radius: var(--radius); max-width: 1100px; margin-left: auto; margin-right: auto;
-        }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; text-align: center; }
-        .feature i { font-size: 36px; color: var(--primary); margin-bottom: 12px; }
-        .feature h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
-        .feature p { font-size: 13px; color: var(--text-light); margin: 0; }
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+}
 
-        /* ========== SECTIONS ========== */
-        section { padding: 100px 0; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-label {
-            display: inline-flex; align-items: center; gap: 8px;
-            font-size: 13px; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 1px; color: var(--primary); margin-bottom: 12px;
-        }
-        .section-title { font-size: 38px; font-weight: 800; color: var(--dark); margin-bottom: 16px; }
-        .section-subtitle { font-size: 17px; color: var(--text-light); max-width: 600px; margin: 0 auto; }
+.logo{
+    font-size:24px;
+    font-weight:700;
+    color:#0077b6;
+}
 
-        /* ========== SERVICES ========== */
-        .services { background: var(--gray); }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .service-card {
-            background: var(--white); padding: 40px 32px; border-radius: var(--radius);
-            box-shadow: var(--shadow); transition: var(--transition);
-            border: 1px solid transparent;
-        }
-        .service-card:hover {
-            transform: translateY(-8px); border-color: var(--primary);
-            box-shadow: var(--shadow-lg);
-        }
-        .service-icon {
-            width: 64px; height: 64px; background: var(--light);
-            border-radius: 18px; display: flex; align-items: center; justify-content: center;
-            font-size: 26px; color: var(--primary); margin-bottom: 24px;
-            transition: var(--transition);
-        }
-        .service-card:hover .service-icon {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white); transform: rotateY(360deg);
-        }
-        .service-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: var(--dark); }
-        .service-card p { font-size: 15px; color: var(--text-light); line-height: 1.7; }
+.nav-links{
+    display:flex;
+    gap:25px;
+}
 
-        /* ========== ABOUT ========== */
-        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
-        .about-images { position: relative; }
-        .about-images img {
-            width: 100%; border-radius: 24px; box-shadow: var(--shadow-lg);
-        }
-        .exp-badge {
-            position: absolute; bottom: -25px; right: -25px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: var(--white); padding: 28px; border-radius: 20px;
-            text-align: center; box-shadow: 0 10px 30px rgba(0,168,204,0.3);
-        }
-        .exp-badge h3 { font-size: 42px; font-weight: 800; margin-bottom: 4px; }
-        .exp-badge p { font-size: 14px; opacity: 0.95; }
-        
-        .about-text h2 { font-size: 38px; font-weight: 800; color: var(--dark); margin-bottom: 24px; }
-        .about-text p { color: var(--text-light); margin-bottom: 20px; line-height: 1.8; font-size: 16px; }
-        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
-        .about-feature { display: flex; align-items: center; gap: 10px; }
-        .about-feature i {
-            width: 22px; height: 22px; background: var(--primary);
-            color: var(--white); border-radius: 50%; display: flex;
-            align-items: center; justify-content: center; font-size: 11px;
-        }
-        .about-feature span { font-weight: 600; color: var(--dark); font-size: 14px; }
+.nav-links a{
+    text-decoration:none;
+    color:#333;
+    font-weight:500;
+}
 
-        /* ========== DOCTORS ========== */
-        .doctors-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .doctor-card {
-            background: var(--white); border-radius: 24px; overflow: hidden;
-            box-shadow: var(--shadow); transition: var(--transition);
-        }
-        .doctor-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
-        .doctor-img { position: relative; overflow: hidden; height: 320px; }
-        .doctor-img img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.5s;
-        }
-        .doctor-card:hover .doctor-img img { transform: scale(1.08); }
-        .doc-social {
-            position: absolute; bottom: -45px; left: 0; right: 0;
-            display: flex; justify-content: center; gap: 10px; padding: 18px;
-            background: linear-gradient(to top, rgba(2,62,138,0.9), transparent);
-            transition: bottom 0.3s;
-        }
-        .doctor-card:hover .doc-social { bottom: 0; }
-        .doc-social a {
-            width: 38px; height: 38px; background: var(--white);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: var(--primary); text-decoration: none; transition: var(--transition);
-        }
-        .doc-social a:hover { background: var(--primary); color: var(--white); transform: translateY(-3px); }
-        .doc-info { padding: 24px; text-align: center; }
-        .doc-info h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
-        .doc-info p { color: var(--primary); font-weight: 600; font-size: 14px; }
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+    linear-gradient(rgba(0,119,182,.85),
+    rgba(0,119,182,.85)),
+    url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;
+    background-position:center;
+    color:white;
+    text-align:center;
+    padding:100px 20px;
+}
 
-        /* ========== TESTIMONIALS ========== */
-        .testimonials { background: var(--gray); }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
-        .testimonial {
-            background: var(--white); padding: 36px; border-radius: var(--radius);
-            box-shadow: var(--shadow); position: relative;
-        }
-        .testimonial::before {
-            content: '"'; position: absolute; top: 20px; right: 28px;
-            font-size: 70px; color: var(--light); font-weight: 800; line-height: 1;
-        }
-        .stars { color: #ffc107; margin-bottom: 18px; font-size: 15px; }
-        .testimonial p { color: var(--text-light); line-height: 1.8; margin-bottom: 24px; font-size: 15px; }
-        .patient { display: flex; align-items: center; gap: 14px; }
-        .patient img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; }
-        .patient h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
-        .patient span { color: var(--text-light); font-size: 13px; }
+.hero-content{
+    max-width:800px;
+}
 
-        /* ========== APPOINTMENT ========== */
-        .appointment-content {
-            display: grid; grid-template-columns: 1fr 1.4fr; gap: 0;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 30px; overflow: hidden; box-shadow: var(--shadow-lg);
-        }
-        .app-info { padding: 60px; color: var(--white); }
-        .app-info h2 { font-size: 34px; font-weight: 800; margin-bottom: 24px; }
-        .app-info p { opacity: 0.95; margin-bottom: 32px; line-height: 1.7; font-size: 16px; }
-        .contact-item { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
-        .contact-item i { font-size: 22px; margin-top: 4px; }
-        .contact-item h4 { font-size: 15px; margin-bottom: 4px; font-weight: 600; }
-        .contact-item p { opacity: 0.9; font-size: 14px; margin: 0; }
-        
-        .app-form { padding: 60px; background: var(--white); }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group.full { grid-column: 1 / -1; }
-        .form-group label {
-            display: block; margin-bottom: 8px; font-weight: 600;
-            color: var(--text); font-size: 14px;
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%; padding: 13px 18px; border: 2px solid #e2e8f0;
-            border-radius: 12px; font-family: 'Inter', sans-serif;
-            font-size: 15px; transition: var(--transition);
-        }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-            outline: none; border-color: var(--primary);
-        }
-        .form-group textarea { resize: vertical; min-height: 110px; }
-        .app-form .btn { width: 100%; justify-content: center; padding: 15px; font-size: 16px; }
+.hero h1{
+    font-size:4rem;
+    margin-bottom:20px;
+}
 
-        /* ========== FOOTER ========== */
-        footer { background: var(--dark); color: var(--white); padding: 70px 0 30px; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
-        .footer-brand .logo { color: var(--white); margin-bottom: 20px; }
-        .footer-brand p { color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 24px; font-size: 15px; }
-        .footer-social { display: flex; gap: 12px; }
-        .footer-social a {
-            width: 40px; height: 40px; background: rgba(255,255,255,0.12);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            color: var(--white); text-decoration: none; transition: var(--transition);
-        }
-        .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
-        .footer-col h4 { font-size: 18px; font-weight: 700; margin-bottom: 22px; color: var(--white); }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a {
-            color: rgba(255,255,255,0.75); text-decoration: none;
-            transition: var(--transition); display: flex; align-items: center; gap: 8px; font-size: 14px;
-        }
-        .footer-col ul li a:hover { color: var(--primary); padding-left: 4px; }
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.12); padding-top: 28px;
-            text-align: center; color: rgba(255,255,255,0.5); font-size: 14px;
-        }
+.hero p{
+    font-size:1.2rem;
+    margin-bottom:30px;
+}
 
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 992px) {
-            .nav-links { display: none; }
-            .hamburger { display: flex; }
-            .hero-content, .about-content, .appointment-content { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 42px; }
-            .section-title { font-size: 32px; }
-            .features-grid { grid-template-columns: 1fr; gap: 20px; }
-            .about-features { grid-template-columns: 1fr; }
-            .form-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .app-info, .app-form { padding: 40px; }
-            .floating-card { display: none; }
-        }
-        @media (max-width: 768px) {
-            .hero { padding: 70px 0; }
-            .hero h1 { font-size: 34px; }
-            .hero-buttons { flex-direction: column; }
-            .hero-stats { flex-direction: column; gap: 20px; }
-            section { padding: 70px 0; }
-            .footer-grid { grid-template-columns: 1fr; gap: 35px; }
-        }
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    background:white;
+    color:#0077b6;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:600;
+    transition:.3s;
+}
 
-        /* Mobile Menu */
-        .mobile-nav {
-            display: none; position: fixed; inset: 0; background: var(--white);
-            z-index: 999; flex-direction: column; align-items: center; justify-content: center;
-            gap: 28px; padding: 40px;
-        }
-        .mobile-nav.active { display: flex; }
-        .mobile-nav a {
-            font-size: 22px; font-weight: 600; color: var(--text);
-            text-decoration: none; transition: var(--transition);
-        }
-        .mobile-nav a:hover { color: var(--primary); }
-        .mobile-nav .btn { width: 100%; max-width: 300px; justify-content: center; }
-    </style>
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+section{
+    padding:100px 10%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.section-title h2{
+    color:#0077b6;
+    font-size:2.5rem;
+}
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:20px;
+}
+
+.about-text h3{
+    font-size:2rem;
+    margin-bottom:20px;
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    color:#0077b6;
+    margin-bottom:15px;
+}
+
+.experience{
+    background:#0077b6;
+    color:white;
+    text-align:center;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+.stat h3{
+    font-size:3rem;
+}
+
+.testimonials{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.testimonial{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.contact{
+    text-align:center;
+    background:#f0f8fc;
+}
+
+.contact-box{
+    max-width:700px;
+    margin:auto;
+}
+
+.contact-info{
+    margin-top:20px;
+    font-size:1.1rem;
+}
+
+footer{
+    background:#023e8a;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:2.5rem;
+}
+
+.about{
+    grid-template-columns:1fr;
+}
+
+.nav-links{
+    display:none;
+}
+}
+</style>
 </head>
 <body>
 
-    <!-- ========== HEADER ========== -->
-    <header id="header">
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <i class="fas fa-tooth"></i>
-                Dent<span>Care</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#doctors">Doctors</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#appointment" class="btn btn-primary">Book Now</a></li>
-            </ul>
-            <div class="hamburger" id="hamburger">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </header>
+<header>
+<div class="navbar">
+<div class="logo">SmileCare Dental</div>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-nav" id="mobileNav">
-        <a href="#home" onclick="closeMenu()">Home</a>
-        <a href="#services" onclick="closeMenu()">Services</a>
-        <a href="#about" onclick="closeMenu()">About</a>
-        <a href="#doctors" onclick="closeMenu()">Doctors</a>
-        <a href="#testimonials" onclick="closeMenu()">Reviews</a>
-        <a href="#appointment" class="btn btn-primary" onclick="closeMenu()">Book Appointment</a>
-    </div>
+<div class="nav-links">
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#implants">Implants</a>
+<a href="#reviews">Reviews</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</header>
 
-    <!-- ========== HERO ========== -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="hero-badge">
-                        <i class="fas fa-award"></i> Award-Winning Dental Care
-                    </div>
-                    <h1>Your Smile, Our <span>Passion</span></h1>
-                    <p>Experience gentle, professional dental care with our expert team. We combine advanced technology with compassionate treatment for your perfect smile.</p>
-                    <div class="hero-buttons">
-                        <a href="#appointment" class="btn btn-primary">
-                            <i class="fas fa-calendar-check"></i> Book Appointment
-                        </a>
-                        <a href="#services" class="btn btn-outline">
-                            Explore Services
-                        </a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat"><h3>15+</h3><p>Years Experience</p></div>
-                        <div class="stat"><h3>10K+</h3><p>Happy Patients</p></div>
-                        <div class="stat"><h3>99%</h3><p>Success Rate</p></div>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=800&q=80" alt="Dental Clinic">
-                    <div class="floating-card fc-1">
-                        <div class="fc-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div class="fc-text"><h4>100% Safe</h4><p>Sterile Environment</p></div>
-                    </div>
-                    <div class="floating-card fc-2">
-                        <div class="fc-icon"><i class="fas fa-user-md"></i></div>
-                        <div class="fc-text"><h4>Expert Care</h4><p>Certified Dentists</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+<div class="hero-content">
+<h1>Beautiful Smiles Start Here</h1>
 
-    <!-- ========== FEATURES BAR ========== -->
-    <div class="container">
-        <div class="features-bar">
-            <div class="features-grid">
-                <div class="feature">
-                    <i class="fas fa-clock"></i>
-                    <h4>Opening Hours</h4>
-                    <p>Mon-Sat: 8AM - 6PM<br>Sunday: Emergency Only</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-phone-alt"></i>
-                    <h4>Emergency</h4>
-                    <p>+1 (555) 123-4567<br>Available 24/7</p>
-                </div>
-                <div class="feature">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h4>Location</h4>
-                    <p>123 Dental Avenue<br>Medical City, MC 12345</p>
-                </div>
-            </div>
-        </div>
-    </div>
+<p>
+Expert Cosmetic & Implant Dentistry with Over
+25 Years of Experience.
+</p>
 
-    <!-- ========== SERVICES ========== -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-tooth"></i> What We Offer</div>
-                <h2 class="section-title">Comprehensive Dental Services</h2>
-                <p class="section-subtitle">From routine checkups to advanced procedures, we provide complete oral health care for the whole family.</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-teeth"></i></div>
-                    <h3>General Dentistry</h3>
-                    <p>Regular checkups, cleanings, fillings, and preventive care to maintain optimal oral health.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-magic"></i></div>
-                    <h3>Cosmetic Dentistry</h3>
-                    <p>Teeth whitening, veneers, bonding, and smile makeovers for a beautiful, confident smile.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-teeth-open"></i></div>
-                    <h3>Orthodontics</h3>
-                    <p>Traditional braces and clear aligners (Invisalign) to straighten teeth and correct bite issues.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-procedures"></i></div>
-                    <h3>Dental Implants</h3>
-                    <p>Permanent, natural-looking tooth replacement solutions using advanced 3D-guided technology.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-child"></i></div>
-                    <h3>Pediatric Dentistry</h3>
-                    <p>Gentle, fun dental care for children in a welcoming environment that reduces anxiety.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-first-aid"></i></div>
-                    <h3>Emergency Care</h3>
-                    <p>Same-day appointments for dental emergencies, toothaches, and urgent oral health needs.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<a href="#contact" class="btn">
+Book Appointment
+</a>
+</div>
+</section>
 
-    <!-- ========== ABOUT ========== -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-images">
-                    <img src="https://images.unsplash.com/photo-1629909615184-74f495363b67?w=800&q=80" alt="About DentCare">
-                    <div class="exp-badge">
-                        <h3>15+</h3>
-                        <p>Years of<br>Excellence</p>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <div class="section-label"><i class="fas fa-heart"></i> Why Choose Us</div>
-                    <h2 class="section-title">Modern Dentistry With a Personal Touch</h2>
-                    <p>At DentCare, we believe exceptional dental care starts with trust and comfort. Our state-of-the-art clinic combines cutting-edge technology with a warm, patient-centered approach.</p>
-                    <p>Every treatment plan is customized to your unique needs, goals, and lifestyle. We take the time to listen, explain, and ensure you feel confident about your care.</p>
-                    <div class="about-features">
-                        <div class="about-feature"><i class="fas fa-check"></i><span>Advanced Technology</span></div>
-                        <div class="about-feature"><i class="fas fa-check"></i><span>Expert Dentists</span></div>
-                        <div class="about-feature"><i class="fas fa-check"></i><span>Comfortable Environment</span></div>
-                        <div class="about-feature"><i class="fas fa-check"></i><span>Affordable Pricing</span></div>
-                        <div class="about-feature"><i class="fas fa-check"></i><span>Insurance Accepted</span></div>
-                        <div class="about-feature"><i class="fas fa-check"></i><span>Flexible Scheduling</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="about">
 
-    <!-- ========== DOCTORS ========== -->
-    <section class="doctors" id="doctors">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-user-md"></i> Our Team</div>
-                <h2 class="section-title">Meet Our Expert Dentists</h2>
-                <p class="section-subtitle">Skilled, compassionate professionals dedicated to your oral health and beautiful smile.</p>
-            </div>
-            <div class="doctors-grid">
-                <div class="doctor-card">
-                    <div class="doctor-img">
-                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" alt="Dr. Sarah">
-                        <div class="doc-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                    <div class="doc-info">
-                        <h3>Dr. Sarah Mitchell</h3>
-                        <p>Chief Dentist</p>
-                    </div>
-                </div>
-                <div class="doctor-card">
-                    <div class="doctor-img">
-                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80" alt="Dr. James">
-                        <div class="doc-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                    <div class="doc-info">
-                        <h3>Dr. James Chen</h3>
-                        <p>Orthodontist</p>
-                    </div>
-                </div>
-                <div class="doctor-card">
-                    <div class="doctor-img">
-                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=600&q=80" alt="Dr. Emily">
-                        <div class="doc-social">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                    <div class="doc-info">
-                        <h3>Dr. Emily Rodriguez</h3>
-                        <p>Pediatric Specialist</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="section-title">
+<h2>Meet Your Dentist</h2>
+</div>
 
-    <!-- ========== TESTIMONIALS ========== -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-comments"></i> Patient Reviews</div>
-                <h2 class="section-title">What Our Patients Say</h2>
-                <p class="section-subtitle">Real stories from real people who trust us with their smiles.</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"I used to dread dental visits, but DentCare changed everything. The staff is so kind and professional, and Dr. Mitchell made me feel completely at ease. My smile has never looked better!"</p>
-                    <div class="patient">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80" alt="Jessica">
-                        <div><h4>Jessica Williams</h4><span>Cosmetic Patient</span></div>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"Brought my kids here for their first dental visit and they actually asked when they could go back! Dr. Rodriguez is amazing with children. Clean, modern office and zero wait times."</p>
-                    <div class="patient">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80" alt="Amanda">
-                        <div><h4>Amanda Thompson</h4><span>Parent</span></div>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <div class="stars">
-                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                    </div>
-                    <p>"Had a dental emergency on a Saturday and they fit me in right away. Professional, pain-free treatment and fair pricing. DentCare is now my family's dental home for life."</p>
-                    <div class="patient">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80" alt="Michael">
-                        <div><h4>Michael Davis</h4><span>Emergency Patient</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="about">
 
-    <!-- ========== APPOINTMENT ========== -->
-    <section class="appointment" id="appointment">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-calendar-check"></i> Get Started</div>
-                <h2 class="section-title">Book Your Appointment</h2>
-                <p class="section-subtitle">Ready for a healthier, brighter smile? Schedule your visit today.</p>
-            </div>
-            <div class="appointment-content">
-                <div class="app-info">
-                    <h2>Visit Our Clinic</h2>
-                    <p>We're conveniently located in the heart of Medical City with ample parking and easy access.</p>
-                    
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div><h4>Address</h4><p>123 Dental Avenue<br>Medical City, MC 12345</p></div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone-alt"></i>
-                        <div><h4>Phone</h4><p>+1 (555) 123-4567<br>Mon-Sat: 8AM - 6PM</p></div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div><h4>Email</h4><p>hello@dentcare.com<br>appointments@dentcare.com</p></div>
-                    </div>
-                    
-                    <div class="footer-social" style="margin-top: 30px;">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="app-form">
-                    <form onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you within 24 hours to confirm your appointment.'); this.reset();">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label>First Name *</label>
-                                <input type="text" placeholder="John" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Last Name *</label>
-                                <input type="text" placeholder="Doe" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Email *</label>
-                                <input type="email" placeholder="john@example.com" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Phone *</label>
-                                <input type="tel" placeholder="(555) 123-4567" required>
-                            </div>
-                            <div class="form-group">
-                                <label>Service Needed</label>
-                                <select>
-                                    <option value="">Select a Service</option>
-                                    <option>General Checkup</option>
-                                    <option>Teeth Cleaning</option>
-                                    <option>Teeth Whitening</option>
-                                    <option>Orthodontics / Braces</option>
-                                    <option>Dental Implants</option>
-                                    <option>Emergency Care</option>
-                                    <option>Other</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Preferred Date</label>
-                                <input type="date">
-                            </div>
-                            <div class="form-group full">
-                                <label>Message (Optional)</label>
-                                <textarea placeholder="Tell us about your dental needs or concerns..."></textarea>
-                            </div>
-                            <div class="form-group full">
-                                <button type="submit" class="btn btn-primary">
-                                    <i class="fas fa-calendar-check"></i> Request Appointment
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+<img src="dentist-female.jpg" alt="Female Dentist">
 
-    <!-- ========== FOOTER ========== -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <i class="fas fa-tooth"></i>
-                        Dent<span>Care</span>
-                    </a>
-                    <p>Providing exceptional dental care with compassion and expertise. Your smile is our passion, your comfort is our priority.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-                        <li><a href="#doctors"><i class="fas fa-chevron-right"></i> Our Team</a></li>
-                        <li><a href="#appointment"><i class="fas fa-chevron-right"></i> Book Now</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Our Services</h4>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> General Dentistry</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Cosmetic Dentistry</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Orthodontics</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Dental Implants</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Emergency Care</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact Info</h4>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Dental Ave, Medical City</a></li>
-                        <li><a href="#"><i class="fas fa-phone"></i> +1 (555) 123-4567</a></li>
-                        <li><a href="#"><i class="fas fa-envelope"></i> hello@dentcare.com</a></li>
-                        <li><a href="#"><i class="fas fa-clock"></i> Mon-Sat: 8AM - 6PM</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 DentCare. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--primary);"></i> for healthy smiles</p>
-            </div>
-        </div>
-    </footer>
+<div class="about-text">
+<h3>Dr. Emma Wilson DDS</h3>
 
-    <!-- ========== JAVASCRIPT ========== -->
-    <script>
-        // Header scroll effect
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
+<p>
+With more than 25 years of clinical experience,
+Dr. Wilson specializes in cosmetic dentistry,
+dental implants, smile makeovers and advanced
+restorative treatments.
+</p>
 
-        // Mobile menu
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobileNav');
-        
-        hamburger.addEventListener('click', () => {
-            mobileNav.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
-        });
-        
-        function closeMenu() {
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = '';
-        }
+<br>
 
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    closeMenu();
-                }
-            });
-        });
+<p>
+Her mission is to provide comfortable,
+modern dental care using the latest
+technology and personalized treatment plans.
+</p>
 
-        // Form submission
-        document.querySelector('form')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your appointment request! Our team will contact you within 24 hours to confirm your visit.');
-            this.reset();
-        });
+</div>
+</div>
 
-        // Animate stats on scroll
-        const observerOptions = { threshold: 0.5 };
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    document.querySelectorAll('.stat h3').forEach(stat => {
-                        const target = parseInt(stat.textContent);
-                        let count = 0;
-                        const increment = target / 50;
-                        const timer = setInterval(() => {
-                            count += increment;
-                            if (count >= target) {
-                                stat.textContent = target + (stat.textContent.includes('+') ? '+' : stat.textContent.includes('%') ? '%' : '');
-                                clearInterval(timer);
-                            } else {
-                                stat.textContent = Math.floor(count) + (stat.textContent.includes('+') ? '+' : stat.textContent.includes('%') ? '%' : '');
-                            }
-                        }, 30);
-                    });
-                    statsObserver.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-        
-        const heroStats = document.querySelector('.hero-stats');
-        if (heroStats) statsObserver.observe(heroStats);
-    </script>
+</section>
+
+<section id="services">
+
+<div class="section-title">
+<h2>Our Services</h2>
+</div>
+
+<div class="services">
+
+<div class="card">
+<h3>Dental Implants</h3>
+<p>Permanent replacement for missing teeth.</p>
+</div>
+
+<div class="card">
+<h3>Cosmetic Dentistry</h3>
+<p>Veneers, whitening and smile makeovers.</p>
+</div>
+
+<div class="card">
+<h3>General Dentistry</h3>
+<p>Routine exams, cleaning and fillings.</p>
+</div>
+
+<div class="card">
+<h3>Emergency Care</h3>
+<p>Same-day appointments for urgent issues.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="implants" class="experience">
+
+<h2>Dental Implant Excellence</h2>
+
+<p>
+State-of-the-art implant procedures restoring
+confidence and function.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<h3>25+</h3>
+<p>Years Experience</p>
+</div>
+
+<div class="stat">
+<h3>5000+</h3>
+<p>Happy Patients</p>
+</div>
+
+<div class="stat">
+<h3>3000+</h3>
+<p>Implants Placed</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="reviews">
+
+<div class="section-title">
+<h2>Patient Reviews</h2>
+</div>
+
+<div class="testimonials">
+
+<div class="testimonial">
+⭐⭐⭐⭐⭐
+<p>
+"Outstanding experience. My implant feels
+completely natural."
+</p>
+<br>
+<strong>— Sarah M.</strong>
+</div>
+
+<div class="testimonial">
+⭐⭐⭐⭐⭐
+<p>
+"Professional, caring, and highly skilled.
+I love my new smile."
+</p>
+<br>
+<strong>— Michael R.</strong>
+</div>
+
+<div class="testimonial">
+⭐⭐⭐⭐⭐
+<p>
+"The best dental clinic I've ever visited."
+</p>
+<br>
+<strong>— Jessica T.</strong>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact" class="contact">
+
+<div class="contact-box">
+
+<div class="section-title">
+<h2>Book Your Consultation</h2>
+</div>
+
+<p>
+Ready for a healthier, more beautiful smile?
+Contact us today.
+</p>
+
+<div class="contact-info">
+📞 +1 (555) 123-4567<br>
+📧 info@smilecare.com<br>
+📍 123 Main Street, Your City
+</div>
+
+<br>
+
+<a href="mailto:info@smilecare.com" class="btn">
+Contact Now
+</a>
+
+</div>
+
+</section>
+
+<footer>
+© 2026 SmileCare Dental Clinic. All Rights Reserved.
+</footer>
+
 </body>
 </html>
