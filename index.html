@@ -100,12 +100,8 @@
         .hero-stat p { font-size: 0.85rem; color: var(--text-muted); }
         .hero-visual { position: relative; }
         .doctor-img {
-            width: 100%; max-width: 420px; aspect-ratio: 4/5; background: linear-gradient(135deg, #E0F2FE, #FCE7F3);
-            border-radius: 30px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: center;
-            box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
-        }
-        .doctor-img::after {
-            content: '👩🏼‍⚕️'; font-size: 8rem; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); opacity: 0.9;
+            width: 100%; max-width: 420px; aspect-ratio: 4/5; object-fit: cover;
+            border-radius: 30px; margin: 0 auto; box-shadow: var(--shadow-lg); position: relative;
         }
         .floating-card {
             position: absolute; background: white; padding: 16px 20px; border-radius: var(--radius); box-shadow: var(--shadow);
@@ -121,10 +117,9 @@
         .about { padding: 100px 0; background: var(--bg-white); }
         .about .container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
         .about-img {
-            aspect-ratio: 1; background: linear-gradient(135deg, #DBEAFE, #FCE7F3); border-radius: 24px;
-            box-shadow: var(--shadow); position: relative; overflow: hidden;
+            width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 24px;
+            box-shadow: var(--shadow);
         }
-        .about-img::after { content: '🦷'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 6rem; opacity: 0.8; }
         .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary); margin-bottom: 12px; }
         .section-title { font-size: 2.6rem; margin-bottom: 16px; }
         .section-text { color: var(--text-light); margin-bottom: 24px; }
@@ -171,13 +166,25 @@
         /* ========== CONTACT ========== */
         .contact { padding: 100px 0; background: var(--bg-white); }
         .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; background: var(--bg-white); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-lg); }
-        .contact-info { background: var(--gradient-soft); padding: 50px; color: white; }
+        .contact-info { 
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.95), rgba(244, 114, 182, 0.95)), 
+                        url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 50px; color: white; position: relative;
+        }
+        .contact-info::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.9), rgba(244, 114, 182, 0.9));
+            z-index: 0;
+        }
+        .contact-info > * { position: relative; z-index: 1; }
         .contact-info h2 { color: white; margin-bottom: 16px; }
-        .contact-info p { color: rgba(255,255,255,0.85); margin-bottom: 30px; }
+        .contact-info p { color: rgba(255,255,255,0.9); margin-bottom: 30px; }
         .info-item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
         .info-item i { font-size: 1.2rem; margin-top: 4px; }
         .social-links { display: flex; gap: 14px; margin-top: 30px; }
-        .social-links a { width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .social-links a { width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); color: white; }
         .social-links a:hover { background: white; color: var(--primary); transform: translateY(-3px); }
         .contact-form { padding: 50px; }
         .form-group { margin-bottom: 20px; }
@@ -280,7 +287,7 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="doctor-img"></div>
+                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80" alt="Dr. Elena Rossi" class="doctor-img">
                 <div class="floating-card fc-1">
                     <div class="fc-icon"><i class="fas fa-check"></i></div>
                     <div class="fc-text"><h4>Pain-Free Care</h4><p>Modern sedation options</p></div>
@@ -296,7 +303,7 @@
     <!-- ========== ABOUT ========== -->
     <section class="about" id="about">
         <div class="container">
-            <div class="about-img reveal"></div>
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80" alt="Modern Dental Office" class="about-img reveal">
             <div class="about-text reveal">
                 <div class="section-label"><i class="fas fa-user-doctor"></i> Meet Your Dentist</div>
                 <h2 class="section-title">Compassionate Care,<br>Exceptional Results</h2>
