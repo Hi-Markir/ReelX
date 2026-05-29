@@ -3,293 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReelCraft Studio | Premium Reel Maker & Content Creator</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Dr. Elena Rossi - Modern, gentle dentistry focused on comfort, aesthetics, and long-term oral health.">
+    <title>Dr. Elena Rossi | Modern & Gentle Dentistry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
-            --primary: #8B5CF6;
-            --primary-dark: #7C3AED;
-            --secondary: #EC4899;
-            --accent: #06B6D4;
-            --dark: #0F0F1A;
-            --dark-light: #1A1A2E;
-            --dark-card: #16162A;
-            --gray: #9CA3AF;
-            --light: #F3F4F6;
-            --white: #FFFFFF;
-            --gradient-1: linear-gradient(135deg, #8B5CF6, #EC4899);
-            --gradient-2: linear-gradient(135deg, #EC4899, #06B6D4);
-            --gradient-3: linear-gradient(135deg, #8B5CF6, #06B6D4);
+            --primary: #0EA5E9;
+            --primary-dark: #0284C7;
+            --accent: #F472B6;
+            --accent-soft: #FCE7F3;
+            --bg: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --text: #0F172A;
+            --text-light: #475569;
+            --text-muted: #94A3B8;
+            --gradient: linear-gradient(135deg, #0EA5E9, #8B5CF6);
+            --gradient-soft: linear-gradient(135deg, #0EA5E9, #F472B6);
+            --shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.12);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', 'Noto Sans Armenian', sans-serif;
-            background-color: var(--dark);
-            color: var(--light);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
             overflow-x: hidden;
         }
-        h1, h2, h3, h4, h5 { font-family: 'Space Grotesk', 'Noto Sans Armenian', sans-serif; }
-        a { text-decoration: none; color: inherit; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; line-height: 1.2; }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* ========== BUTTONS ========== */
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px;
+            border-radius: 50px; font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer;
+            transition: var(--transition); font-family: 'Inter', sans-serif;
+        }
+        .btn-primary {
+            background: var(--gradient-soft); color: white; box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4); }
+        .btn-outline {
+            background: transparent; border: 2px solid var(--primary); color: var(--primary);
+        }
+        .btn-outline:hover { background: var(--primary); color: white; transform: translateY(-2px); }
 
         /* ========== NAVBAR ========== */
         .navbar {
-            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 18px 0; transition: all 0.4s ease;
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 20px 0;
+            transition: var(--transition);
         }
         .navbar.scrolled {
-            background: rgba(15, 15, 26, 0.92); backdrop-filter: blur(20px); padding: 12px 0; border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+            background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(12px); padding: 14px 0; box-shadow: var(--shadow);
         }
         .navbar .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo {
-            font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 800;
-            background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-        .logo span { -webkit-text-fill-color: var(--white); }
-        .nav-links { display: flex; list-style: none; gap: 35px; align-items: center; }
-        .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--gray); transition: color 0.3s; position: relative; }
-        .nav-links a:hover { color: var(--white); }
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--gradient-1); transition: width 0.3s;
-        }
-        .nav-links a:hover::after { width: 100%; }
-
-        .btn {
-            display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; border-radius: 50px; font-weight: 600; font-size: 0.95rem; border: none; cursor: pointer; transition: all 0.3s ease; font-family: 'Inter', 'Noto Sans Armenian', sans-serif;
-        }
-        .btn-primary { background: var(--gradient-1); color: var(--white); box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5); }
-        .btn-outline { border: 2px solid rgba(139, 92, 246, 0.5); color: var(--white); background: transparent; }
-        .btn-outline:hover { background: rgba(139, 92, 246, 0.1); border-color: var(--primary); transform: translateY(-2px); }
-
-        .lang-switch {
-            display: flex; gap: 6px; background: rgba(255,255,255,0.05); padding: 4px; border-radius: 50px; margin-right: 10px;
-        }
-        .lang-btn {
-            padding: 6px 12px; border-radius: 50px; border: none; background: transparent; color: var(--gray); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif;
-        }
-        .lang-btn.active { background: var(--gradient-1); color: white; }
-        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; }
-        .hamburger span { width: 28px; height: 2.5px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text); }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; list-style: none; gap: 32px; align-items: center; }
+        .nav-links a { font-size: 0.95rem; font-weight: 500; color: var(--text-light); }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .hamburger span { width: 26px; height: 2.5px; background: var(--text); border-radius: 2px; transition: var(--transition); }
         .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
         /* ========== HERO ========== */
-        .hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 120px 0 80px; overflow: hidden; }
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden;
+        }
         .hero::before {
-            content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent 70%); border-radius: 50%; pointer-events: none;
+            content: ''; position: absolute; top: -10%; right: -5%; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.12), transparent 70%); border-radius: 50%;
         }
         .hero::after {
-            content: ''; position: absolute; bottom: -100px; left: -200px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(236, 72, 153, 0.1), transparent 70%); border-radius: 50%; pointer-events: none;
+            content: ''; position: absolute; bottom: -10%; left: -10%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(244, 114, 182, 0.1), transparent 70%); border-radius: 50%;
         }
         .hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
         .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; background: rgba(139, 92, 246, 0.12); border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 50px; font-size: 0.85rem; font-weight: 500; color: var(--primary); margin-bottom: 24px; animation: fadeInUp 0.8s ease;
+            display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--accent-soft); color: var(--accent);
+            font-size: 0.85rem; font-weight: 600; border-radius: 50px; margin-bottom: 20px;
         }
-        .hero-badge i { font-size: 0.75rem; }
-        .hero h1 { font-size: 3.8rem; font-weight: 900; line-height: 1.1; margin-bottom: 24px; animation: fadeInUp 0.8s ease 0.1s both; }
-        .hero h1 .highlight { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-text { font-size: 1.15rem; color: var(--gray); line-height: 1.7; margin-bottom: 40px; max-width: 520px; animation: fadeInUp 0.8s ease 0.2s both; }
-        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeInUp 0.8s ease 0.3s both; }
-        .hero-stats { display: flex; gap: 40px; margin-top: 50px; animation: fadeInUp 0.8s ease 0.4s both; }
-        .hero-stat h3 { font-size: 2rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-stat p { font-size: 0.85rem; color: var(--gray); margin-top: 4px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.15rem; color: var(--text-light); margin-bottom: 32px; max-width: 520px; }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 40px; }
+        .hero-stats { display: flex; gap: 36px; }
+        .hero-stat h3 { font-size: 1.8rem; font-family: 'Inter', sans-serif; font-weight: 800; color: var(--primary); }
+        .hero-stat p { font-size: 0.85rem; color: var(--text-muted); }
+        .hero-visual { position: relative; }
+        .doctor-img {
+            width: 100%; max-width: 420px; aspect-ratio: 4/5; background: linear-gradient(135deg, #E0F2FE, #FCE7F3);
+            border-radius: 30px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: center;
+            box-shadow: var(--shadow-lg); position: relative; overflow: hidden;
+        }
+        .doctor-img::after {
+            content: '👩🏼‍⚕️'; font-size: 8rem; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); opacity: 0.9;
+        }
+        .floating-card {
+            position: absolute; background: white; padding: 16px 20px; border-radius: var(--radius); box-shadow: var(--shadow);
+            display: flex; align-items: center; gap: 12px; animation: float 4s ease-in-out infinite;
+        }
+        .fc-1 { top: 15%; right: -10px; animation-delay: 0.5s; }
+        .fc-2 { bottom: 20%; left: -20px; animation-delay: 1s; }
+        .fc-icon { width: 40px; height: 40px; background: var(--gradient-soft); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
+        .fc-text h4 { font-size: 0.9rem; font-family: 'Inter', sans-serif; font-weight: 700; }
+        .fc-text p { font-size: 0.75rem; color: var(--text-muted); }
 
-        .hero-visual { position: relative; display: flex; justify-content: center; align-items: center; animation: fadeInRight 1s ease 0.3s both; }
-        .phone-mockup { width: 300px; height: 600px; background: var(--dark-card); border-radius: 40px; border: 3px solid rgba(139, 92, 246, 0.3); position: relative; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 80px rgba(139, 92, 246, 0.1); }
-        .phone-notch { position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 28px; background: var(--dark); border-radius: 0 0 18px 18px; z-index: 2; }
-        .phone-screen { width: 100%; height: 100%; background: linear-gradient(180deg, #1a1a2e, #16213e, #0f3460); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; }
-        .phone-screen .play-icon { width: 70px; height: 70px; background: var(--gradient-1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; animation: pulse 2s infinite; }
-        .phone-screen .reel-label { margin-top: 16px; font-weight: 600; font-size: 0.9rem; color: rgba(255,255,255,0.7); }
-        .phone-screen .progress-bar { position: absolute; bottom: 30px; left: 20px; right: 20px; height: 4px; background: rgba(255,255,255,0.15); border-radius: 4px; overflow: hidden; }
-        .phone-screen .progress-bar::after { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 65%; background: var(--gradient-1); border-radius: 4px; animation: progressAnim 4s ease infinite; }
-        .floating-card { position: absolute; background: rgba(22, 22, 42, 0.9); backdrop-filter: blur(10px); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 16px; padding: 16px 20px; animation: float 3s ease-in-out infinite; }
-        .floating-card-1 { top: 60px; left: -60px; display: flex; align-items: center; gap: 12px; }
-        .floating-card-1 .icon-circle { width: 42px; height: 42px; background: var(--gradient-1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
-        .floating-card-1 .fc-text p { font-size: 0.75rem; color: var(--gray); }
-        .floating-card-1 .fc-text h4 { font-size: 0.95rem; font-weight: 700; }
-        .floating-card-2 { bottom: 100px; right: -50px; animation-delay: 1s; }
-        .floating-card-2 .views { font-size: 1.3rem; font-weight: 800; background: var(--gradient-2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .floating-card-2 p { font-size: 0.75rem; color: var(--gray); margin-top: 2px; }
-        .floating-card-2 .trend { display: flex; align-items: center; gap: 4px; color: #10B981; font-size: 0.8rem; font-weight: 600; margin-top: 6px; }
-
-        /* ========== BRANDS ========== */
-        .brands { padding: 60px 0; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .brands p { text-align: center; color: var(--gray); font-size: 0.9rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }
-        .brand-logos { display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; }
-        .brand-logos i { font-size: 2.2rem; color: rgba(255,255,255,0.25); transition: color 0.3s; }
-        .brand-logos i:hover { color: rgba(255,255,255,0.6); }
+        /* ========== ABOUT ========== */
+        .about { padding: 100px 0; background: var(--bg-white); }
+        .about .container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
+        .about-img {
+            aspect-ratio: 1; background: linear-gradient(135deg, #DBEAFE, #FCE7F3); border-radius: 24px;
+            box-shadow: var(--shadow); position: relative; overflow: hidden;
+        }
+        .about-img::after { content: '🦷'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 6rem; opacity: 0.8; }
+        .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary); margin-bottom: 12px; }
+        .section-title { font-size: 2.6rem; margin-bottom: 16px; }
+        .section-text { color: var(--text-light); margin-bottom: 24px; }
+        .credentials { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; }
+        .cred-item { display: flex; gap: 12px; }
+        .cred-icon { color: var(--accent); }
 
         /* ========== SERVICES ========== */
-        .services { padding: 120px 0; }
-        .section-label { display: inline-flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 16px; }
-        .section-title { font-size: 2.8rem; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
-        .section-subtitle { font-size: 1.1rem; color: var(--gray); max-width: 550px; line-height: 1.7; }
-        .section-header { text-align: center; margin-bottom: 60px; }
-        .section-header .section-subtitle { margin: 0 auto; }
-        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .service-card { background: var(--dark-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 40px 32px; transition: all 0.4s ease; position: relative; overflow: hidden; }
-        .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gradient-1); opacity: 0; transition: opacity 0.4s; }
-        .service-card:hover { transform: translateY(-8px); border-color: rgba(139, 92, 246, 0.2); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); }
-        .service-card:hover::before { opacity: 1; }
-        .service-icon { width: 60px; height: 60px; background: rgba(139, 92, 246, 0.1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--primary); margin-bottom: 24px; transition: all 0.4s; }
-        .service-card:hover .service-icon { background: var(--gradient-1); color: white; transform: scale(1.1); }
-        .service-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 12px; }
-        .service-card p { color: var(--gray); line-height: 1.7; font-size: 0.95rem; }
+        .services { padding: 100px 0; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .service-card {
+            background: var(--bg-white); padding: 32px; border-radius: var(--radius); box-shadow: var(--shadow);
+            transition: var(--transition); border: 1px solid transparent;
+        }
+        .service-card:hover { transform: translateY(-8px); border-color: var(--primary); box-shadow: var(--shadow-lg); }
+        .service-icon { width: 56px; height: 56px; background: var(--accent-soft); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--accent); margin-bottom: 20px; transition: var(--transition); }
+        .service-card:hover .service-icon { background: var(--gradient-soft); color: white; }
+        .service-card h3 { font-size: 1.25rem; margin-bottom: 10px; }
+        .service-card p { font-size: 0.95rem; color: var(--text-light); }
 
-        /* ========== PORTFOLIO ========== */
-        .portfolio { padding: 120px 0; background: var(--dark-light); }
-        .portfolio-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-        .portfolio-item { position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 9/16; background: var(--dark-card); cursor: pointer; }
-        .portfolio-item .thumb { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; transition: transform 0.5s; }
-        .portfolio-item:nth-child(1) .thumb { background: linear-gradient(135deg, #667eea, #764ba2); }
-        .portfolio-item:nth-child(2) .thumb { background: linear-gradient(135deg, #f093fb, #f5576c); }
-        .portfolio-item:nth-child(3) .thumb { background: linear-gradient(135deg, #4facfe, #00f2fe); }
-        .portfolio-item:nth-child(4) .thumb { background: linear-gradient(135deg, #43e97b, #38f9d7); }
-        .portfolio-item:nth-child(5) .thumb { background: linear-gradient(135deg, #fa709a, #fee140); }
-        .portfolio-item:nth-child(6) .thumb { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
-        .portfolio-item:nth-child(7) .thumb { background: linear-gradient(135deg, #fccb90, #d57eeb); }
-        .portfolio-item:nth-child(8) .thumb { background: linear-gradient(135deg, #e0c3fc, #8ec5fc); }
-        .portfolio-item:hover .thumb { transform: scale(1.08); }
-        .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.85)); display: flex; flex-direction: column; justify-content: flex-end; padding: 24px; opacity: 0; transition: opacity 0.4s; }
-        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-        .portfolio-overlay h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
-        .portfolio-overlay p { font-size: 0.85rem; color: var(--gray); }
-        .portfolio-overlay .play-btn { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.8); width: 50px; height: 50px; background: var(--gradient-1); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform 0.4s; }
-        .portfolio-item:hover .portfolio-overlay .play-btn { transform: translate(-50%, -50%) scale(1); }
-
-        /* ========== PROCESS ========== */
-        .process { padding: 120px 0; }
-        .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; position: relative; }
-        .process-steps::before { content: ''; position: absolute; top: 50px; left: 12%; right: 12%; height: 2px; background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); opacity: 0.3; }
-        .step { text-align: center; position: relative; }
-        .step-number { width: 60px; height: 60px; background: var(--dark-card); border: 2px solid var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--primary); margin: 0 auto 24px; position: relative; z-index: 1; transition: all 0.4s; }
-        .step:hover .step-number { background: var(--gradient-1); color: white; border-color: transparent; transform: scale(1.1); }
-        .step h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
-        .step p { font-size: 0.9rem; color: var(--gray); line-height: 1.6; }
+        /* ========== WHY CHOOSE ========== */
+        .why-choose { padding: 100px 0; background: var(--bg-white); }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+        .feature { text-align: center; padding: 30px 20px; }
+        .feature-icon { width: 70px; height: 70px; background: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: var(--primary); margin: 0 auto 20px; transition: var(--transition); }
+        .feature:hover .feature-icon { background: var(--gradient-soft); color: white; transform: scale(1.1); }
+        .feature h4 { margin-bottom: 8px; }
+        .feature p { font-size: 0.9rem; color: var(--text-light); }
 
         /* ========== TESTIMONIALS ========== */
-        .testimonials { padding: 120px 0; background: var(--dark-light); }
-        .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-        .testimonial-card { background: var(--dark-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; padding: 36px; transition: all 0.4s; }
-        .testimonial-card:hover { transform: translateY(-5px); border-color: rgba(139, 92, 246, 0.2); }
-        .stars { display: flex; gap: 4px; margin-bottom: 20px; }
-        .stars i { color: #FBBF24; font-size: 0.9rem; }
-        .testimonial-card blockquote { font-size: 1rem; line-height: 1.7; color: var(--gray); margin-bottom: 24px; font-style: italic; }
-        .testimonial-author { display: flex; align-items: center; gap: 14px; }
-        .testimonial-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; color: white; }
-        .testimonial-card:nth-child(1) .testimonial-avatar { background: var(--gradient-1); }
-        .testimonial-card:nth-child(2) .testimonial-avatar { background: var(--gradient-2); }
-        .testimonial-card:nth-child(3) .testimonial-avatar { background: var(--gradient-3); }
-        .testimonial-author h4 { font-size: 0.95rem; font-weight: 700; }
-        .testimonial-author p { font-size: 0.8rem; color: var(--gray); }
+        .testimonials { padding: 100px 0; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .testimonial {
+            background: var(--bg-white); padding: 30px; border-radius: var(--radius); box-shadow: var(--shadow);
+        }
+        .stars { color: #FBBF24; margin-bottom: 16px; font-size: 0.9rem; }
+        .testimonial blockquote { font-size: 1rem; color: var(--text-light); margin-bottom: 20px; font-style: italic; }
+        .author { display: flex; align-items: center; gap: 12px; }
+        .avatar { width: 44px; height: 44px; background: var(--gradient-soft); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; }
+        .author-info h4 { font-size: 0.95rem; font-family: 'Inter', sans-serif; }
+        .author-info p { font-size: 0.8rem; color: var(--text-muted); }
 
-        /* ========== PRICING ========== */
-        .pricing { padding: 120px 0; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; align-items: start; }
-        .pricing-card { background: var(--dark-card); border: 1px solid rgba(255,255,255,0.06); border-radius: 24px; padding: 40px 36px; transition: all 0.4s; position: relative; }
-        .pricing-card.popular { border-color: rgba(139, 92, 246, 0.4); transform: scale(1.05); box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15); }
-        .pricing-card.popular .popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--gradient-1); color: white; padding: 6px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; }
-        .pricing-card:hover { transform: translateY(-5px); }
-        .pricing-card.popular:hover { transform: scale(1.05) translateY(-5px); }
-        .pricing-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
-        .pricing-card .price-desc { font-size: 0.9rem; color: var(--gray); margin-bottom: 24px; }
-        .price { display: flex; align-items: baseline; gap: 4px; margin-bottom: 30px; }
-        .price .currency { font-size: 1.5rem; font-weight: 700; color: var(--gray); }
-        .price .amount { font-size: 3.2rem; font-weight: 900; font-family: 'Space Grotesk', sans-serif; }
-        .price .period { font-size: 1rem; color: var(--gray); }
-        .pricing-features { list-style: none; margin-bottom: 32px; }
-        .pricing-features li { display: flex; align-items: center; gap: 12px; padding: 10px 0; font-size: 0.95rem; color: var(--gray); }
-        .pricing-features li i { color: #10B981; font-size: 0.85rem; width: 20px; }
-        .pricing-features li.disabled { opacity: 0.4; }
-        .pricing-features li.disabled i { color: var(--gray); }
-        .pricing-card .btn { width: 100%; justify-content: center; }
-
-        /* ========== FAQ ========== */
-        .faq { padding: 120px 0; background: var(--dark-light); }
-        .faq-list { max-width: 750px; margin: 0 auto; }
-        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
-        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; cursor: pointer; font-size: 1.05rem; font-weight: 600; font-family: 'Space Grotesk', 'Noto Sans Armenian', sans-serif; transition: color 0.3s; background: none; border: none; color: var(--light); width: 100%; text-align: left; }
-        .faq-question:hover { color: var(--primary); }
-        .faq-question i { transition: transform 0.3s; font-size: 0.9rem; color: var(--primary); }
-        .faq-item.active .faq-question i { transform: rotate(45deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
-        .faq-item.active .faq-answer { max-height: 300px; padding-bottom: 24px; }
-        .faq-answer p { color: var(--gray); line-height: 1.7; font-size: 0.95rem; }
-
-        /* ========== CTA ========== */
-        .cta { padding: 120px 0; position: relative; overflow: hidden; }
-        .cta-box { background: var(--dark-card); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 32px; padding: 80px 60px; text-align: center; position: relative; overflow: hidden; }
-        .cta-box::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent 70%); pointer-events: none; }
-        .cta-box h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 16px; position: relative; }
-        .cta-box p { font-size: 1.15rem; color: var(--gray); max-width: 500px; margin: 0 auto 40px; line-height: 1.7; position: relative; }
-        .cta-buttons { display: flex; gap: 16px; justify-content: center; position: relative; flex-wrap: wrap; }
+        /* ========== CONTACT ========== */
+        .contact { padding: 100px 0; background: var(--bg-white); }
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; background: var(--bg-white); border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-lg); }
+        .contact-info { background: var(--gradient-soft); padding: 50px; color: white; }
+        .contact-info h2 { color: white; margin-bottom: 16px; }
+        .contact-info p { color: rgba(255,255,255,0.85); margin-bottom: 30px; }
+        .info-item { display: flex; gap: 14px; margin-bottom: 20px; align-items: flex-start; }
+        .info-item i { font-size: 1.2rem; margin-top: 4px; }
+        .social-links { display: flex; gap: 14px; margin-top: 30px; }
+        .social-links a { width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: var(--transition); }
+        .social-links a:hover { background: white; color: var(--primary); transform: translateY(-3px); }
+        .contact-form { padding: 50px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 0.9rem; font-weight: 500; margin-bottom: 6px; color: var(--text); }
+        .form-control {
+            width: 100%; padding: 12px 16px; border: 1px solid #E2E8F0; border-radius: 12px; font-size: 0.95rem;
+            transition: var(--transition); font-family: 'Inter', sans-serif;
+        }
+        .form-control:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2); }
+        textarea.form-control { min-height: 120px; resize: vertical; }
 
         /* ========== FOOTER ========== */
-        .footer { padding: 80px 0 30px; border-top: 1px solid rgba(255,255,255,0.05); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
-        .footer-brand .logo { margin-bottom: 16px; display: inline-block; }
-        .footer-brand p { color: var(--gray); line-height: 1.7; font-size: 0.95rem; margin-bottom: 24px; }
-        .social-links { display: flex; gap: 14px; }
-        .social-links a { width: 42px; height: 42px; background: rgba(255,255,255,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--gray); transition: all 0.3s; }
-        .social-links a:hover { background: var(--gradient-1); color: white; transform: translateY(-3px); }
-        .footer-col h4 { font-size: 1rem; font-weight: 700; margin-bottom: 20px; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 12px; }
-        .footer-col ul li a { color: var(--gray); font-size: 0.9rem; transition: color 0.3s; }
-        .footer-col ul li a:hover { color: var(--white); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-        .footer-bottom p { color: var(--gray); font-size: 0.85rem; }
-        .footer-bottom-links { display: flex; gap: 24px; }
-        .footer-bottom-links a { color: var(--gray); font-size: 0.85rem; transition: color 0.3s; }
-        .footer-bottom-links a:hover { color: var(--white); }
+        .footer { padding: 60px 0 30px; background: var(--text); color: white; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; }
+        .footer-logo span { color: var(--primary); }
+        .footer p { color: #94A3B8; font-size: 0.9rem; margin-bottom: 20px; }
+        .footer h4 { margin-bottom: 16px; font-size: 1rem; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 10px; }
+        .footer-links a { color: #94A3B8; font-size: 0.9rem; transition: var(--transition); }
+        .footer-links a:hover { color: white; }
+        .footer-bottom { border-top: 1px solid #1E293B; padding-top: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+        .footer-bottom p { color: #64748B; font-size: 0.85rem; }
 
         /* ========== ANIMATIONS ========== */
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
-        @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); } 50% { box-shadow: 0 0 0 20px rgba(139, 92, 246, 0); } }
-        @keyframes progressAnim { 0% { width: 0%; } 50% { width: 65%; } 100% { width: 100%; } }
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* ========== MOBILE NAV ========== */
-        .mobile-nav { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(15, 15, 26, 0.98); backdrop-filter: blur(20px); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 30px; }
-        .mobile-nav.active { display: flex; }
-        .mobile-nav a { font-size: 1.5rem; font-weight: 600; color: var(--light); transition: color 0.3s; }
-        .mobile-nav a:hover { color: var(--primary); }
-
         /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .hero .container { grid-template-columns: 1fr; text-align: center; }
-            .hero-text { margin: 0 auto 40px; } .hero-buttons { justify-content: center; } .hero-stats { justify-content: center; } .hero-visual { margin-top: 40px; }
-            .services-grid { grid-template-columns: repeat(2, 1fr); }
-            .portfolio-grid { grid-template-columns: repeat(3, 1fr); }
-            .process-steps { grid-template-columns: repeat(2, 1fr); } .process-steps::before { display: none; }
-            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-            .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-            .pricing-card.popular { transform: scale(1); } .pricing-card.popular:hover { transform: translateY(-5px); }
+        @media (max-width: 992px) {
+            .hero .container, .about .container, .contact-wrapper { grid-template-columns: 1fr; text-align: center; }
+            .hero p { margin: 0 auto 32px; } .hero-buttons { justify-content: center; } .hero-stats { justify-content: center; }
+            .doctor-img { max-width: 350px; margin-bottom: 40px; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
             .nav-links { display: none; } .hamburger { display: flex; }
-            .hero h1 { font-size: 2.6rem; } .section-title { font-size: 2.2rem; }
-            .services-grid, .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-            .process-steps { grid-template-columns: 1fr; gap: 40px; }
-            .testimonials-grid, .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .phone-mockup { width: 240px; height: 480px; }
-            .floating-card-1 { left: -20px; top: 30px; } .floating-card-2 { right: -20px; }
-            .cta-box { padding: 50px 30px; } .cta-box h2 { font-size: 2rem; } .cta-buttons { flex-direction: column; align-items: center; }
-            .lang-switch { margin: 0 auto 15px; }
+            .hero h1 { font-size: 2.5rem; } .section-title { font-size: 2rem; }
+            .features-grid, .footer-grid { grid-template-columns: 1fr; }
+            .contact-info, .contact-form { padding: 30px; }
         }
         @media (max-width: 480px) {
-            .hero h1 { font-size: 2rem; } .hero-stats { flex-direction: column; gap: 20px; }
-            .portfolio-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .hero h1 { font-size: 2rem; } .hero-stats { flex-direction: column; gap: 16px; }
+            .credentials { grid-template-columns: 1fr; }
         }
+
+        /* Mobile Nav */
+        .mobile-nav {
+            display: none; position: fixed; inset: 0; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); z-index: 999;
+            flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+        }
+        .mobile-nav.active { display: flex; }
+        .mobile-nav a { font-size: 1.5rem; font-weight: 600; color: var(--text); }
+        .mobile-nav a:hover { color: var(--primary); }
     </style>
 </head>
 <body>
@@ -297,21 +242,12 @@
     <!-- ========== NAVBAR ========== -->
     <nav class="navbar" id="navbar">
         <div class="container">
-            <a href="#" class="logo">Reel<span>Craft</span></a>
+            <a href="#" class="logo">Dr. <span>Elena Rossi</span></a>
             <ul class="nav-links">
-                <li><a href="#services" data-i18n="nav.services">Services</a></li>
-                <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
-                <li><a href="#process" data-i18n="nav.process">Process</a></li>
-                <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
-                <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-                <li>
-                    <div class="lang-switch">
-                        <button class="lang-btn active" data-lang="en">EN</button>
-                        <button class="lang-btn" data-lang="ru">RU</button>
-                        <button class="lang-btn" data-lang="hy">ՀՅ</button>
-                    </div>
-                </li>
-                <li><a href="#contact" class="btn btn-primary" data-i18n="nav.cta">Get Started <i class="fas fa-arrow-right"></i></a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#contact" class="btn btn-primary">Book Appointment</a></li>
             </ul>
             <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
@@ -320,64 +256,58 @@
     </nav>
 
     <div class="mobile-nav" id="mobileNav">
-        <div class="lang-switch" style="margin-bottom:20px;">
-            <button class="lang-btn active" data-lang="en">EN</button>
-            <button class="lang-btn" data-lang="ru">RU</button>
-            <button class="lang-btn" data-lang="hy">ՀՅ</button>
-        </div>
-        <a href="#services" onclick="closeMobile()" data-i18n="nav.services">Services</a>
-        <a href="#portfolio" onclick="closeMobile()" data-i18n="nav.portfolio">Portfolio</a>
-        <a href="#process" onclick="closeMobile()" data-i18n="nav.process">Process</a>
-        <a href="#pricing" onclick="closeMobile()" data-i18n="nav.pricing">Pricing</a>
-        <a href="#faq" onclick="closeMobile()" data-i18n="nav.faq">FAQ</a>
-        <a href="#contact" class="btn btn-primary" onclick="closeMobile()" data-i18n="nav.cta">Get Started <i class="fas fa-arrow-right"></i></a>
+        <a href="#about" onclick="closeMobile()">About</a>
+        <a href="#services" onclick="closeMobile()">Services</a>
+        <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+        <a href="#contact" class="btn btn-primary" onclick="closeMobile()">Book Appointment</a>
     </div>
 
     <!-- ========== HERO ========== -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge"><i class="fas fa-circle"></i> <span data-i18n="hero.badge">Trusted by 200+ Brands & Creators</span></div>
-                <h1 data-i18n="hero.title">We Create <span class="highlight">Scroll-Stopping</span> Reels That Go Viral</h1>
-                <p class="hero-text" data-i18n="hero.subtitle">Professional short-form video content crafted for Instagram Reels, TikTok & YouTube Shorts. Boost your engagement, grow your audience, and dominate the algorithm.</p>
+                <div class="hero-badge"><i class="fas fa-star"></i> Rated #1 Dental Clinic in the City</div>
+                <h1>Modern Dentistry Designed Around <em>You</em></h1>
+                <p>Experience gentle, personalized dental care in a calm, modern environment. We combine advanced technology with a compassionate touch to create healthy, beautiful smiles.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary" data-i18n="hero.btn1">Start Your Project <i class="fas fa-arrow-right"></i></a>
-                    <a href="#portfolio" class="btn btn-outline" data-i18n="hero.btn2"><i class="fas fa-play"></i> View Our Work</a>
+                    <a href="#contact" class="btn btn-primary">Schedule a Visit <i class="fas fa-arrow-right"></i></a>
+                    <a href="#services" class="btn btn-outline">Explore Services</a>
                 </div>
                 <div class="hero-stats">
-                    <div class="hero-stat"><h3>500+</h3><p data-i18n="hero.stat1.desc">Reels Created</p></div>
-                    <div class="hero-stat"><h3>50M+</h3><p data-i18n="hero.stat2.desc">Total Views</p></div>
-                    <div class="hero-stat"><h3>98%</h3><p data-i18n="hero.stat3.desc">Client Satisfaction</p></div>
+                    <div class="hero-stat"><h3>15+</h3><p>Years Experience</p></div>
+                    <div class="hero-stat"><h3>10K+</h3><p>Happy Patients</p></div>
+                    <div class="hero-stat"><h3>99%</h3><p>Comfort Rate</p></div>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="phone-mockup">
-                    <div class="phone-notch"></div>
-                    <div class="phone-screen">
-                        <div class="play-icon"><i class="fas fa-play" style="margin-left:3px;"></i></div>
-                        <p class="reel-label" data-i18n="phone.label">▶ Your Next Viral Reel</p>
-                        <div class="progress-bar"></div>
-                    </div>
+                <div class="doctor-img"></div>
+                <div class="floating-card fc-1">
+                    <div class="fc-icon"><i class="fas fa-check"></i></div>
+                    <div class="fc-text"><h4>Pain-Free Care</h4><p>Modern sedation options</p></div>
                 </div>
-                <div class="floating-card floating-card-1">
-                    <div class="icon-circle"><i class="fas fa-heart"></i></div>
-                    <div class="fc-text"><p data-i18n="float.likes">Likes</p><h4>24.8K</h4></div>
-                </div>
-                <div class="floating-card floating-card-2">
-                    <div class="views">1.2M</div>
-                    <p data-i18n="float.views">Total Views</p>
-                    <div class="trend"><i class="fas fa-arrow-up"></i> +340%</div>
+                <div class="floating-card fc-2">
+                    <div class="fc-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="fc-text"><h4>Easy Booking</h4><p>Online & same-day slots</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== BRANDS ========== -->
-    <section class="brands">
+    <!-- ========== ABOUT ========== -->
+    <section class="about" id="about">
         <div class="container">
-            <p data-i18n="brands.title">Featured On & Trusted By</p>
-            <div class="brand-logos">
-                <i class="fab fa-instagram"></i><i class="fab fa-tiktok"></i><i class="fab fa-youtube"></i><i class="fab fa-facebook"></i><i class="fab fa-spotify"></i><i class="fab fa-apple"></i>
+            <div class="about-img reveal"></div>
+            <div class="about-text reveal">
+                <div class="section-label"><i class="fas fa-user-doctor"></i> Meet Your Dentist</div>
+                <h2 class="section-title">Compassionate Care,<br>Exceptional Results</h2>
+                <p class="section-text">Hi, I'm Dr. Elena Rossi. After graduating top of my class from Columbia University College of Dental Medicine, I dedicated my career to creating a dental experience that feels completely different. I believe great dentistry starts with trust, comfort, and listening to your needs.</p>
+                <p class="section-text">My practice blends cutting-edge technology with a gentle, patient-first approach. Whether it's a routine cleaning or a complete smile makeover, you'll receive personalized care in a relaxed, spa-like environment.</p>
+                <div class="credentials">
+                    <div class="cred-item"><i class="fas fa-graduation-cap cred-icon"></i><span>DMD, Columbia University</span></div>
+                    <div class="cred-item"><i class="fas fa-certificate cred-icon"></i><span>Certified Invisalign Provider</span></div>
+                    <div class="cred-item"><i class="fas fa-microscope cred-icon"></i><span>Advanced Cosmetic Training</span></div>
+                    <div class="cred-item"><i class="fas fa-heart cred-icon"></i><span>Patient Comfort Specialist</span></div>
+                </div>
             </div>
         </div>
     </section>
@@ -386,79 +316,73 @@
     <section class="services" id="services">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><i class="fas fa-sparkles"></i> <span data-i18n="services.label">What We Do</span></div>
-                <h2 class="section-title" data-i18n="services.title">Services Built for <span class="highlight">Virality</span></h2>
-                <p class="section-subtitle" data-i18n="services.subtitle">From concept to final cut, we handle every aspect of creating high-performing short-form video content.</p>
+                <div class="section-label"><i class="fas fa-tooth"></i> Our Services</div>
+                <h2 class="section-title">Comprehensive Care for<br>Your Best Smile</h2>
+                <p class="section-text" style="margin: 0 auto; max-width: 600px; color: var(--text-light);">From preventive checkups to advanced cosmetic procedures, we offer everything you need under one roof.</p>
             </div>
-            <div class="services-grid">
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-film"></i></div>
-                    <h3 data-i18n="services.1.title">Reel Production</h3>
-                    <p data-i18n="services.1.desc">End-to-end creation of engaging Instagram Reels with professional editing, transitions, effects, and trending audio integration.</p>
+            <div class="services-grid reveal">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-shield-heart"></i></div>
+                    <h3>Preventive Care</h3>
+                    <p>Regular cleanings, digital X-rays, and oral cancer screenings to keep your smile healthy long-term.</p>
                 </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
-                    <h3 data-i18n="services.2.title">Script & Storyboard</h3>
-                    <p data-i18n="services.2.desc">Data-driven scriptwriting and storyboarding that hooks viewers in the first 3 seconds and keeps them watching till the end.</p>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-gem"></i></div>
+                    <h3>Cosmetic Dentistry</h3>
+                    <p>Veneers, bonding, and smile design to transform the appearance of your teeth naturally.</p>
                 </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-music"></i></div>
-                    <h3 data-i18n="services.3.title">Audio & Music</h3>
-                    <p data-i18n="services.3.desc">Trending audio selection, custom sound design, voiceovers, and licensed music that matches your brand vibe perfectly.</p>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-teeth-open"></i></div>
+                    <h3>Invisalign & Braces</h3>
+                    <p>Clear aligners and modern orthodontics for straighter teeth without traditional metal brackets.</p>
                 </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
-                    <h3 data-i18n="services.4.title">Motion Graphics</h3>
-                    <p data-i18n="services.4.desc">Eye-catching text animations, kinetic typography, branded overlays, and visual effects that elevate your content.</p>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-sun"></i></div>
+                    <h3>Teeth Whitening</h3>
+                    <p>Professional-grade whitening systems for a brighter, whiter smile in just one visit.</p>
                 </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-                    <h3 data-i18n="services.5.title">Content Strategy</h3>
-                    <p data-i18n="services.5.desc">Strategic content planning, posting schedules, hashtag research, and algorithm optimization for maximum reach.</p>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-screwdriver-wrench"></i></div>
+                    <h3>Dental Implants</h3>
+                    <p>Permanent, natural-looking tooth replacements using advanced 3D-guided placement.</p>
                 </div>
-                <div class="service-card reveal">
-                    <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
-                    <h3 data-i18n="services.6.title">Brand Partnerships</h3>
-                    <p data-i18n="services.6.desc">Sponsored reel creation, product placements, and branded content that feels authentic and drives real conversions.</p>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-kit-medical"></i></div>
+                    <h3>Emergency Care</h3>
+                    <p>Same-day appointments for toothaches, fractures, and urgent dental needs.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== PORTFOLIO ========== -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-label"><i class="fas fa-images"></i> <span data-i18n="portfolio.label">Our Work</span></div>
-                <h2 class="section-title" data-i18n="portfolio.title">Reels That <span class="highlight">Perform</span></h2>
-                <p class="section-subtitle" data-i18n="portfolio.subtitle">A showcase of our viral-worthy content created for brands and creators worldwide.</p>
-            </div>
-            <div class="portfolio-grid reveal">
-                <div class="portfolio-item"><div class="thumb">🎬</div><div class="portfolio-overlay"><div class="play-btn"><i class="fas fa-play" style="margin-left:2px;font-size:0.8rem;"></i></div><h4 data-i18n="portfolio.1.title">Fashion Brand Launch</h4><p data-i18n="portfolio.1.stats">2.1M views • 180K likes</p></div></div>
-                <div class="portfolio-item"><div class="thumb">🎵</div><div class="portfolio-overlay"><div class="play-btn"><i class="fas fa-play" style="margin-left:2px;font-size:0.8rem;"></i></div><h4 data-i18n="portfolio.2.title">Music Artist Promo</h4><p data-i18n="portfolio.2.stats">4.5M views • 520K likes</p></div></div>
-                <div class="portfolio-item"><div class="thumb">🍔</div><div class="portfolio-overlay"><div class="play-btn"><i class="fas fa-play" style="margin-left:2px;font-size:0.8rem;"></i></div><h4 data-i18n="portfolio.3.title">Restaurant Campaign</h4><p data-i18n="portfolio.3.stats">890K views • 67K likes</p></div></div>
-                <div class="portfolio-item"><div class="thumb">💪</div><div class="portfolio-overlay"><div class="play-btn"><i class="fas fa-play" style="margin-left:2px;font-size:0.8rem;"></i></div><h4 data-i18n="portfolio.4.title">Fitness Challenge</h4><p data-i18n="portfolio.4.stats">3.2M views • 290K likes</p></div></div>
-                <div class="portfolio-item"><div class="thumb">💄</div><div class="portfolio-overlay"><div class="play-btn"><i class="fas fa-play" style="margin-left:2px;font-size:0.8rem;"></i></div><h4 data-i18n="portfolio.5.title">Beauty Tutorial</h4><p data-i18n="portfolio.5.stats">1.8M views • 145K likes</p></div></div>
-                <div class="portfolio-item"><div class="thumb">🏠</div><div class="portfolio-overlay"><div class="play-btn"><i class="fas fa-play" style="margin-left:2px;font-size:0.8rem;"></i></div><h4 data-i18n="portfolio.6.title">Real Estate Tour</h4><p data-i18n="portfolio.6.stats">670K views • 42K likes</p></div></div>
-                <div class="portfolio-item"><div class="thumb">📱</div><div class="portfolio-overlay"><div class="play-btn"><i class="fas fa-play" style="margin-left:2px;font-size:0.8rem;"></i></div><h4 data-i18n="portfolio.7.title">Tech Product Reveal</h4><p data-i18n="portfolio.7.stats">1.5M views • 98K likes</p></div></div>
-                <div class="portfolio-item"><div class="thumb">✈️</div><div class="portfolio-overlay"><div class="play-btn"><i class="fas fa-play" style="margin-left:2px;font-size:0.8rem;"></i></div><h4 data-i18n="portfolio.8.title">Travel Destination</h4><p data-i18n="portfolio.8.stats">2.7M views • 210K likes</p></div></div>
             </div>
         </div>
     </section>
 
-    <!-- ========== PROCESS ========== -->
-    <section class="process" id="process">
+    <!-- ========== WHY CHOOSE ========== -->
+    <section class="why-choose">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><i class="fas fa-diagram-project"></i> <span data-i18n="process.label">Our Process</span></div>
-                <h2 class="section-title" data-i18n="process.title">From Idea to <span class="highlight">Viral</span> in 4 Steps</h2>
-                <p class="section-subtitle" data-i18n="process.subtitle">A streamlined workflow designed to deliver premium reels on time, every time.</p>
+                <div class="section-label"><i class="fas fa-heart-pulse"></i> Why Choose Us</div>
+                <h2 class="section-title">Dentistry Reimagined</h2>
             </div>
-            <div class="process-steps reveal">
-                <div class="step"><div class="step-number">01</div><h3 data-i18n="process.1.title">Discovery Call</h3><p data-i18n="process.1.desc">We learn about your brand, goals, target audience, and content vision to build the perfect strategy.</p></div>
-                <div class="step"><div class="step-number">02</div><h3 data-i18n="process.2.title">Concept & Script</h3><p data-i18n="process.2.desc">Our creative team develops scroll-stopping concepts, hooks, and scripts tailored to your niche.</p></div>
-                <div class="step"><div class="step-number">03</div><h3 data-i18n="process.3.title">Production & Edit</h3><p data-i18n="process.3.desc">Professional filming, editing, motion graphics, color grading, and sound design come together.</p></div>
-                <div class="step"><div class="step-number">04</div><h3 data-i18n="process.4.title">Deliver & Optimize</h3><p data-i18n="process.4.desc">Final reels delivered in all formats with optimization tips, captions, and hashtag recommendations.</p></div>
+            <div class="features-grid reveal">
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <h4>Pain-Free Technology</h4>
+                    <p>Laser dentistry, digital anesthesia, and gentle techniques for maximum comfort.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-laptop-medical"></i></div>
+                    <h4>State-of-the-Art</h4>
+                    <p>3D scanners, intraoral cameras, and AI-assisted diagnostics for precision care.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
+                    <h4>Personalized Plans</h4>
+                    <p>Treatment plans tailored to your lifestyle, budget, and aesthetic goals.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+                    <h4>Transparent Pricing</h4>
+                    <p>No hidden fees. Clear costs upfront with flexible payment plans accepted.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -467,109 +391,75 @@
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><i class="fas fa-heart"></i> <span data-i18n="testimonials.label">Client Love</span></div>
-                <h2 class="section-title" data-i18n="testimonials.title">What Our Clients <span class="highlight">Say</span></h2>
-                <p class="section-subtitle" data-i18n="testimonials.subtitle">Don't just take our word for it — hear from the brands and creators we've helped grow.</p>
+                <div class="section-label"><i class="fas fa-comments"></i> Patient Love</div>
+                <h2 class="section-title">Real Stories from<br>Real Smiles</h2>
             </div>
             <div class="testimonials-grid reveal">
-                <div class="testimonial-card">
+                <div class="testimonial">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote data-i18n="testimonials.1.quote">"ReelCraft transformed our Instagram presence. Our reels went from 2K views to consistently hitting 500K+. The quality and creativity is unmatched."</blockquote>
-                    <div class="testimonial-author"><div class="testimonial-avatar">SK</div><div><h4 data-i18n="testimonials.1.name">Sarah Kim</h4><p data-i18n="testimonials.1.role">Founder, GlowUp Beauty</p></div></div>
+                    <blockquote>"I used to be terrified of dentists until I found Dr. Rossi. Her office feels like a spa, and she actually takes the time to explain everything. My smile has never looked better!"</blockquote>
+                    <div class="author"><div class="avatar">JM</div><div class="author-info"><h4>Jessica M.</h4><p>Invisalign Patient</p></div></div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote data-i18n="testimonials.2.quote">"Best investment we've made for our brand. The team understands the algorithm like no one else. Our follower count tripled in just 3 months."</blockquote>
-                    <div class="testimonial-author"><div class="testimonial-avatar">MR</div><div><h4 data-i18n="testimonials.2.name">Marcus Rivera</h4><p data-i18n="testimonials.2.role">CEO, FitNation Gym</p></div></div>
+                    <blockquote>"Professional, warm, and incredibly skilled. I had a dental implant done and barely felt a thing. The follow-up care was exceptional. Highly recommend to anyone with dental anxiety."</blockquote>
+                    <div class="author"><div class="avatar">DT</div><div class="author-info"><h4>David T.</h4><p>Implant Patient</p></div></div>
                 </div>
-                <div class="testimonial-card">
+                <div class="testimonial">
                     <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <blockquote data-i18n="testimonials.3.quote">"Professional, fast, and incredibly creative. Every reel they produce gets more engagement than our previous agency's monthly output. Game changer."</blockquote>
-                    <div class="testimonial-author"><div class="testimonial-avatar">AL</div><div><h4 data-i18n="testimonials.3.name">Aisha Laurent</h4><p data-i18n="testimonials.3.role">Content Creator, 1.2M followers</p></div></div>
+                    <blockquote>"My whole family comes here now. Dr. Rossi is amazing with kids and adults alike. The online booking is seamless, and they never make you wait. True modern dentistry!"</blockquote>
+                    <div class="author"><div class="avatar">AL</div><div class="author-info"><h4>Amanda L.</h4><p>Family Patient</p></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ========== PRICING ========== -->
-    <section class="pricing" id="pricing">
+    <!-- ========== CONTACT ========== -->
+    <section class="contact" id="contact">
         <div class="container">
             <div class="section-header reveal">
-                <div class="section-label"><i class="fas fa-tag"></i> <span data-i18n="pricing.label">Pricing</span></div>
-                <h2 class="section-title" data-i18n="pricing.title">Plans That <span class="highlight">Scale</span> With You</h2>
-                <p class="section-subtitle" data-i18n="pricing.subtitle">Transparent pricing, no hidden fees. Choose the plan that fits your content needs.</p>
+                <div class="section-label"><i class="fas fa-calendar-check"></i> Get in Touch</div>
+                <h2 class="section-title">Book Your First Visit</h2>
+                <p class="section-text" style="margin: 0 auto; max-width: 500px;">New patients are always welcome. Fill out the form and our team will confirm your appointment within 2 hours.</p>
             </div>
-            <div class="pricing-grid reveal">
-                <div class="pricing-card">
-                    <h3 data-i18n="pricing.starter.title">Starter</h3><p class="price-desc" data-i18n="pricing.starter.desc">Perfect for individuals & small brands</p>
-                    <div class="price"><span class="currency">$</span><span class="amount">499</span><span class="period" data-i18n="pricing.per.month">/month</span></div>
-                    <ul class="pricing-features">
-                        <li data-i18n="pricing.f.4reels">4 Reels per month</li><li data-i18n="pricing.f.edit">Professional editing</li><li data-i18n="pricing.f.audio">Trending audio selection</li><li data-i18n="pricing.f.caption">Captions & hashtags</li><li data-i18n="pricing.f.rev2">2 revision rounds</li><li class="disabled" data-i18n="pricing.f.motion">Motion graphics</li><li class="disabled" data-i18n="pricing.f.strategy">Content strategy</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline" data-i18n="pricing.btn.start">Get Started</a>
+            <div class="contact-wrapper reveal">
+                <div class="contact-info">
+                    <h2>Visit Our Clinic</h2>
+                    <p>We're conveniently located in the heart of downtown with free parking for patients.</p>
+                    <div class="info-item"><i class="fas fa-location-dot"></i><div><strong>124 Wellness Ave, Suite 300<br>New York, NY 10012</strong></div></div>
+                    <div class="info-item"><i class="fas fa-phone"></i><div><strong>(212) 555-0198</strong><br>Mon–Fri: 8am–6pm | Sat: 9am–2pm</div></div>
+                    <div class="info-item"><i class="fas fa-envelope"></i><div><strong>hello@drrossidentistry.com</strong></div></div>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
                 </div>
-                <div class="pricing-card popular">
-                    <div class="popular-badge" data-i18n="pricing.popular.badge">Most Popular</div>
-                    <h3 data-i18n="pricing.pro.title">Pro Creator</h3><p class="price-desc" data-i18n="pricing.pro.desc">For serious creators & growing brands</p>
-                    <div class="price"><span class="currency">$</span><span class="amount">999</span><span class="period" data-i18n="pricing.per.month">/month</span></div>
-                    <ul class="pricing-features">
-                        <li data-i18n="pricing.f.8reels">8 Reels per month</li><li data-i18n="pricing.f.premium">Premium editing & effects</li><li data-i18n="pricing.f.motion2">Custom motion graphics</li><li data-i18n="pricing.f.script">Script & storyboard</li><li data-i18n="pricing.f.unlimited">Unlimited revisions</li><li data-i18n="pricing.f.strategy2">Content strategy session</li><li data-i18n="pricing.f.priority">Priority delivery</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary" data-i18n="pricing.btn.start">Get Started <i class="fas fa-arrow-right"></i></a>
-                </div>
-                <div class="pricing-card">
-                    <h3 data-i18n="pricing.ent.title">Enterprise</h3><p class="price-desc" data-i18n="pricing.ent.desc">Full-scale content for big brands</p>
-                    <div class="price"><span class="currency">$</span><span class="amount">2499</span><span class="period" data-i18n="pricing.per.month">/month</span></div>
-                    <ul class="pricing-features">
-                        <li data-i18n="pricing.f.20reels">20+ Reels per month</li><li data-i18n="pricing.f.fullteam">Full production team</li><li data-i18n="pricing.f.advanced">Advanced motion graphics</li><li data-i18n="pricing.f.director">Dedicated creative director</li><li data-i18n="pricing.f.multi">Multi-platform optimization</li><li data-i18n="pricing.f.analytics">Analytics & reporting</li><li data-i18n="pricing.f.247">24/7 support</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-outline" data-i18n="pricing.btn.contact">Contact Sales</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== FAQ ========== -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-label"><i class="fas fa-circle-question"></i> <span data-i18n="faq.label">FAQ</span></div>
-                <h2 class="section-title" data-i18n="faq.title">Frequently Asked <span class="highlight">Questions</span></h2>
-            </div>
-            <div class="faq-list reveal">
-                <div class="faq-item">
-                    <button class="faq-question"><span data-i18n="faq.1.q">How long does it take to produce one reel?</span><i class="fas fa-plus"></i></button>
-                    <div class="faq-answer"><p data-i18n="faq.1.a">Typically 3-5 business days per reel from concept approval to final delivery. Rush delivery is available for Pro and Enterprise plans with 48-hour turnaround.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question"><span data-i18n="faq.2.q">Do you provide the raw footage or just edit?</span><i class="fas fa-plus"></i></button>
-                    <div class="faq-answer"><p data-i18n="faq.2.a">We offer both services. You can send us your raw footage and we'll handle the editing, or we can plan and guide you through filming. Enterprise clients get full on-location production support.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question"><span data-i18n="faq.3.q">What platforms do you optimize for?</span><i class="fas fa-plus"></i></button>
-                    <div class="faq-answer"><p data-i18n="faq.3.a">All our reels are optimized for Instagram Reels, TikTok, and YouTube Shorts. Each platform has unique requirements and we deliver formats tailored to each one for maximum reach.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question"><span data-i18n="faq.4.q">Can I request changes after delivery?</span><i class="fas fa-plus"></i></button>
-                    <div class="faq-answer"><p data-i18n="faq.4.a">Absolutely! Starter plans include 2 revision rounds, while Pro and Enterprise plans include unlimited revisions until you're 100% satisfied with the final product.</p></div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question"><span data-i18n="faq.5.q">Do you guarantee viral results?</span><i class="fas fa-plus"></i></button>
-                    <div class="faq-answer"><p data-i18n="faq.5.a">While no one can guarantee virality, our reels consistently outperform industry averages. We use proven hooks, trending formats, and algorithm optimization to maximize your chances of going viral.</p></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ========== CTA ========== -->
-    <section class="cta" id="contact">
-        <div class="container">
-            <div class="cta-box reveal">
-                <h2 data-i18n="cta.title">Ready to Go <span class="highlight">Viral</span>?</h2>
-                <p data-i18n="cta.subtitle">Let's create scroll-stopping reels that grow your brand. Book a free strategy call and get your custom content plan today.</p>
-                <div class="cta-buttons">
-                    <a href="mailto:hello@reelcraft.studio" class="btn btn-primary"><i class="fas fa-envelope"></i> hello@reelcraft.studio</a>
-                    <a href="#" class="btn btn-outline"><i class="fas fa-calendar"></i> <span data-i18n="cta.btn2">Book a Free Call</span></a>
+                <div class="contact-form">
+                    <form onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you shortly.');">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" class="form-control" placeholder="Jane Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" class="form-control" placeholder="jane@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" class="form-control" placeholder="(555) 123-4567" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Date & Time</label>
+                            <input type="text" class="form-control" placeholder="e.g. Next Tuesday morning">
+                        </div>
+                        <div class="form-group">
+                            <label>How can we help?</label>
+                            <textarea class="form-control" placeholder="Tell us about your dental needs..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Request Appointment</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -579,54 +469,44 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo">Reel<span>Craft</span></a>
-                    <p data-i18n="footer.desc">Premium short-form video content studio. We help brands and creators go viral with scroll-stopping reels.</p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                        <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+                <div>
+                    <div class="footer-logo">Dr. <span>Elena Rossi</span></div>
+                    <p>Modern, gentle dentistry focused on your comfort, health, and confidence. Your smile deserves the best.</p>
                 </div>
-                <div class="footer-col">
-                    <h4 data-i18n="footer.services.title">Services</h4>
-                    <ul>
-                        <li><a href="#" data-i18n="footer.services.1">Reel Production</a></li>
-                        <li><a href="#" data-i18n="footer.services.2">Video Editing</a></li>
-                        <li><a href="#" data-i18n="footer.services.3">Motion Graphics</a></li>
-                        <li><a href="#" data-i18n="footer.services.4">Content Strategy</a></li>
-                        <li><a href="#" data-i18n="footer.services.5">Brand Partnerships</a></li>
+                <div>
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Dr. Rossi</a></li>
+                        <li><a href="#services">Our Services</a></li>
+                        <li><a href="#testimonials">Patient Reviews</a></li>
+                        <li><a href="#contact">Book Appointment</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4 data-i18n="footer.company.title">Company</h4>
-                    <ul>
-                        <li><a href="#" data-i18n="footer.company.1">About Us</a></li>
-                        <li><a href="#" data-i18n="footer.company.2">Portfolio</a></li>
-                        <li><a href="#" data-i18n="footer.company.3">Careers</a></li>
-                        <li><a href="#" data-i18n="footer.company.4">Blog</a></li>
-                        <li><a href="#" data-i18n="footer.company.5">Contact</a></li>
+                <div>
+                    <h4>Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Preventive Care</a></li>
+                        <li><a href="#">Cosmetic Dentistry</a></li>
+                        <li><a href="#">Invisalign</a></li>
+                        <li><a href="#">Dental Implants</a></li>
                     </ul>
                 </div>
-                <div class="footer-col">
-                    <h4 data-i18n="footer.support.title">Support</h4>
-                    <ul>
-                        <li><a href="#" data-i18n="footer.support.1">Help Center</a></li>
-                        <li><a href="#" data-i18n="footer.support.2">FAQ</a></li>
-                        <li><a href="#" data-i18n="footer.support.3">Terms of Service</a></li>
-                        <li><a href="#" data-i18n="footer.support.4">Privacy Policy</a></li>
-                        <li><a href="#" data-i18n="footer.support.5">Refund Policy</a></li>
+                <div>
+                    <h4>Office Hours</h4>
+                    <ul class="footer-links">
+                        <li>Monday – Friday: 8am – 6pm</li>
+                        <li>Saturday: 9am – 2pm</li>
+                        <li>Sunday: Closed</li>
+                        <li style="margin-top: 10px;"><em>Emergency slots available daily</em></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-i18n="footer.copyright">&copy; 2026 ReelCraft Studio. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="#" data-i18n="footer.links.privacy">Privacy</a>
-                    <a href="#" data-i18n="footer.links.terms">Terms</a>
-                    <a href="#" data-i18n="footer.links.cookies">Cookies</a>
+                <p>&copy; 2026 Dr. Elena Rossi Dentistry. All rights reserved.</p>
+                <div class="footer-links" style="display: flex; gap: 20px;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Accessibility</a>
                 </div>
             </div>
         </div>
@@ -634,158 +514,9 @@
 
     <!-- ========== JAVASCRIPT ========== -->
     <script>
-        // Translations Object
-        const translations = {
-            en: {
-                "nav.services":"Services","nav.portfolio":"Portfolio","nav.process":"Process","nav.pricing":"Pricing","nav.faq":"FAQ","nav.cta":"Get Started <i class='fas fa-arrow-right'></i>",
-                "hero.badge":"Trusted by 200+ Brands & Creators","hero.title":"We Create <span class='highlight'>Scroll-Stopping</span> Reels That Go Viral","hero.subtitle":"Professional short-form video content crafted for Instagram Reels, TikTok & YouTube Shorts. Boost your engagement, grow your audience, and dominate the algorithm.","hero.btn1":"Start Your Project <i class='fas fa-arrow-right'></i>","hero.btn2":"<i class='fas fa-play'></i> View Our Work",
-                "hero.stat1.desc":"Reels Created","hero.stat2.desc":"Total Views","hero.stat3.desc":"Client Satisfaction",
-                "phone.label":"▶ Your Next Viral Reel","float.likes":"Likes","float.views":"Total Views",
-                "brands.title":"Featured On & Trusted By",
-                "services.label":"What We Do","services.title":"Services Built for <span class='highlight'>Virality</span>","services.subtitle":"From concept to final cut, we handle every aspect of creating high-performing short-form video content.",
-                "services.1.title":"Reel Production","services.1.desc":"End-to-end creation of engaging Instagram Reels with professional editing, transitions, effects, and trending audio integration.",
-                "services.2.title":"Script & Storyboard","services.2.desc":"Data-driven scriptwriting and storyboarding that hooks viewers in the first 3 seconds and keeps them watching till the end.",
-                "services.3.title":"Audio & Music","services.3.desc":"Trending audio selection, custom sound design, voiceovers, and licensed music that matches your brand vibe perfectly.",
-                "services.4.title":"Motion Graphics","services.4.desc":"Eye-catching text animations, kinetic typography, branded overlays, and visual effects that elevate your content.",
-                "services.5.title":"Content Strategy","services.5.desc":"Strategic content planning, posting schedules, hashtag research, and algorithm optimization for maximum reach.",
-                "services.6.title":"Brand Partnerships","services.6.desc":"Sponsored reel creation, product placements, and branded content that feels authentic and drives real conversions.",
-                "portfolio.label":"Our Work","portfolio.title":"Reels That <span class='highlight'>Perform</span>","portfolio.subtitle":"A showcase of our viral-worthy content created for brands and creators worldwide.",
-                "portfolio.1.title":"Fashion Brand Launch","portfolio.1.stats":"2.1M views • 180K likes","portfolio.2.title":"Music Artist Promo","portfolio.2.stats":"4.5M views • 520K likes","portfolio.3.title":"Restaurant Campaign","portfolio.3.stats":"890K views • 67K likes","portfolio.4.title":"Fitness Challenge","portfolio.4.stats":"3.2M views • 290K likes","portfolio.5.title":"Beauty Tutorial","portfolio.5.stats":"1.8M views • 145K likes","portfolio.6.title":"Real Estate Tour","portfolio.6.stats":"670K views • 42K likes","portfolio.7.title":"Tech Product Reveal","portfolio.7.stats":"1.5M views • 98K likes","portfolio.8.title":"Travel Destination","portfolio.8.stats":"2.7M views • 210K likes",
-                "process.label":"Our Process","process.title":"From Idea to <span class='highlight'>Viral</span> in 4 Steps","process.subtitle":"A streamlined workflow designed to deliver premium reels on time, every time.",
-                "process.1.title":"Discovery Call","process.1.desc":"We learn about your brand, goals, target audience, and content vision to build the perfect strategy.","process.2.title":"Concept & Script","process.2.desc":"Our creative team develops scroll-stopping concepts, hooks, and scripts tailored to your niche.","process.3.title":"Production & Edit","process.3.desc":"Professional filming, editing, motion graphics, color grading, and sound design come together.","process.4.title":"Deliver & Optimize","process.4.desc":"Final reels delivered in all formats with optimization tips, captions, and hashtag recommendations.",
-                "testimonials.label":"Client Love","testimonials.title":"What Our Clients <span class='highlight'>Say</span>","testimonials.subtitle":"Don't just take our word for it — hear from the brands and creators we've helped grow.",
-                "testimonials.1.quote":"\"ReelCraft transformed our Instagram presence. Our reels went from 2K views to consistently hitting 500K+. The quality and creativity is unmatched.\"","testimonials.1.name":"Sarah Kim","testimonials.1.role":"Founder, GlowUp Beauty",
-                "testimonials.2.quote":"\"Best investment we've made for our brand. The team understands the algorithm like no one else. Our follower count tripled in just 3 months.\"","testimonials.2.name":"Marcus Rivera","testimonials.2.role":"CEO, FitNation Gym",
-                "testimonials.3.quote":"\"Professional, fast, and incredibly creative. Every reel they produce gets more engagement than our previous agency's monthly output. Game changer.\"","testimonials.3.name":"Aisha Laurent","testimonials.3.role":"Content Creator, 1.2M followers",
-                "pricing.label":"Pricing","pricing.title":"Plans That <span class='highlight'>Scale</span> With You","pricing.subtitle":"Transparent pricing, no hidden fees. Choose the plan that fits your content needs.","pricing.per.month":"/month",
-                "pricing.starter.title":"Starter","pricing.starter.desc":"Perfect for individuals & small brands","pricing.pro.title":"Pro Creator","pricing.pro.desc":"For serious creators & growing brands","pricing.ent.title":"Enterprise","pricing.ent.desc":"Full-scale content for big brands","pricing.popular.badge":"Most Popular",
-                "pricing.f.4reels":"4 Reels per month","pricing.f.edit":"Professional editing","pricing.f.audio":"Trending audio selection","pricing.f.caption":"Captions & hashtags","pricing.f.rev2":"2 revision rounds","pricing.f.motion":"Motion graphics","pricing.f.strategy":"Content strategy",
-                "pricing.f.8reels":"8 Reels per month","pricing.f.premium":"Premium editing & effects","pricing.f.motion2":"Custom motion graphics","pricing.f.script":"Script & storyboard","pricing.f.unlimited":"Unlimited revisions","pricing.f.strategy2":"Content strategy session","pricing.f.priority":"Priority delivery",
-                "pricing.f.20reels":"20+ Reels per month","pricing.f.fullteam":"Full production team","pricing.f.advanced":"Advanced motion graphics","pricing.f.director":"Dedicated creative director","pricing.f.multi":"Multi-platform optimization","pricing.f.analytics":"Analytics & reporting","pricing.f.247":"24/7 support",
-                "pricing.btn.start":"Get Started","pricing.btn.contact":"Contact Sales",
-                "faq.label":"FAQ","faq.title":"Frequently Asked <span class='highlight'>Questions</span>",
-                "faq.1.q":"How long does it take to produce one reel?","faq.1.a":"Typically 3-5 business days per reel from concept approval to final delivery. Rush delivery is available for Pro and Enterprise plans with 48-hour turnaround.",
-                "faq.2.q":"Do you provide the raw footage or just edit?","faq.2.a":"We offer both services. You can send us your raw footage and we'll handle the editing, or we can plan and guide you through filming. Enterprise clients get full on-location production support.",
-                "faq.3.q":"What platforms do you optimize for?","faq.3.a":"All our reels are optimized for Instagram Reels, TikTok, and YouTube Shorts. Each platform has unique requirements and we deliver formats tailored to each one for maximum reach.",
-                "faq.4.q":"Can I request changes after delivery?","faq.4.a":"Absolutely! Starter plans include 2 revision rounds, while Pro and Enterprise plans include unlimited revisions until you're 100% satisfied with the final product.",
-                "faq.5.q":"Do you guarantee viral results?","faq.5.a":"While no one can guarantee virality, our reels consistently outperform industry averages. We use proven hooks, trending formats, and algorithm optimization to maximize your chances of going viral.",
-                "cta.title":"Ready to Go <span class='highlight'>Viral</span>?","cta.subtitle":"Let's create scroll-stopping reels that grow your brand. Book a free strategy call and get your custom content plan today.","cta.btn2":"Book a Free Call",
-                "footer.desc":"Premium short-form video content studio. We help brands and creators go viral with scroll-stopping reels.","footer.services.title":"Services","footer.services.1":"Reel Production","footer.services.2":"Video Editing","footer.services.3":"Motion Graphics","footer.services.4":"Content Strategy","footer.services.5":"Brand Partnerships",
-                "footer.company.title":"Company","footer.company.1":"About Us","footer.company.2":"Portfolio","footer.company.3":"Careers","footer.company.4":"Blog","footer.company.5":"Contact",
-                "footer.support.title":"Support","footer.support.1":"Help Center","footer.support.2":"FAQ","footer.support.3":"Terms of Service","footer.support.4":"Privacy Policy","footer.support.5":"Refund Policy",
-                "footer.copyright":"&copy; 2026 ReelCraft Studio. All rights reserved.","footer.links.privacy":"Privacy","footer.links.terms":"Terms","footer.links.cookies":"Cookies"
-            },
-            ru: {
-                "nav.services":"Услуги","nav.portfolio":"Портфолио","nav.process":"Процесс","nav.pricing":"Цены","nav.faq":"FAQ","nav.cta":"Начать <i class='fas fa-arrow-right'></i>",
-                "hero.badge":"Нам доверяют 200+ брендов и авторов","hero.title":"Мы создаем <span class='highlight'>цепляющие</span> Reels, которые набирают вирусные просмотры","hero.subtitle":"Профессиональный короткий видеоконтент для Instagram Reels, TikTok и YouTube Shorts. Повышайте вовлеченность, растите аудиторию и покоряйте алгоритмы.","hero.btn1":"Начать проект <i class='fas fa-arrow-right'></i>","hero.btn2":"<i class='fas fa-play'></i> Смотреть работы",
-                "hero.stat1.desc":"Reels создано","hero.stat2.desc":"Всего просмотров","hero.stat3.desc":"Довольных клиентов",
-                "phone.label":"▶ Ваш следующий вирусный Reels","float.likes":"Лайки","float.views":"Просмотров",
-                "brands.title":"Нам доверяют и мы сотрудничаем с",
-                "services.label":"Наши услуги","services.title":"Услуги для <span class='highlight'>вирусного роста</span>","services.subtitle":"От идеи до финального монтажа — мы берем на себя создание высококачественного короткого видеоконтента.",
-                "services.1.title":"Создание Reels","services.1.desc":"Полный цикл создания вовлекающих Instagram Reels с профессиональным монтажом, переходами, эффектами и трендовой музыкой.",
-                "services.2.title":"Сценарий и раскадровка","services.2.desc":"Написание сценариев на основе данных, которые цепляют за первые 3 секунды и удерживают внимание до конца.",
-                "services.3.title":"Аудио и музыка","services.3.desc":"Подбор трендовых звуков, кастомный саунд-дизайн, озвучка и лицензионная музыка под стиль вашего бренда.",
-                "services.4.title":"Моушн-графика","services.4.desc":"Яркие текстовые анимации, кинетическая типографика, фирменные оверлеи и визуальные эффекты.",
-                "services.5.title":"Контент-стратегия","services.5.desc":"Планирование контента, расписание публикаций, подбор хэштегов и оптимизация под алгоритмы для максимального охвата.",
-                "services.6.title":"Бренд-партнерства","services.6.desc":"Создание спонсорских роликов, нативная реклама и branded-контент, который конвертирует.",
-                "portfolio.label":"Наши работы","portfolio.title":"Reels, которые <span class='highlight'>приносят результат</span>","portfolio.subtitle":"Подборка вирусного контента, созданного для брендов и авторов по всему миру.",
-                "portfolio.1.title":"Запуск модного бренда","portfolio.1.stats":"2.1M просмотров • 180K лайков","portfolio.2.title":"Промо музыканта","portfolio.2.stats":"4.5M просмотров • 520K лайков","portfolio.3.title":"Рекламная кампания ресторана","portfolio.3.stats":"890K просмотров • 67K лайков","portfolio.4.title":"Фитнес-челлендж","portfolio.4.stats":"3.2M просмотров • 290K лайков","portfolio.5.title":"Бьюти-туториал","portfolio.5.stats":"1.8M просмотров • 145K лайков","portfolio.6.title":"Тур по недвижимости","portfolio.6.stats":"670K просмотров • 42K лайков","portfolio.7.title":"Распаковка tech-продукта","portfolio.7.stats":"1.5M просмотров • 98K лайков","portfolio.8.title":"Путешествие","portfolio.8.stats":"2.7M просмотров • 210K лайков",
-                "process.label":"Наш процесс","process.title":"От идеи до <span class='highlight'>вирусного ролика</span> за 4 шага","process.subtitle":"Отлаженный рабочий процесс для стабильной сдачи премиальных Reels в срок.",
-                "process.1.title":"Знакомство","process.1.desc":"Изучаем ваш бренд, цели, аудиторию и создаем идеальную стратегию.","process.2.title":"Концепт и сценарий","process.2.desc":"Креативная команда разрабатывает цепляющие хуки и сценарии под вашу нишу.","process.3.title":"Съемка и монтаж","process.3.desc":"Профессиональный монтаж, графика, цветокоррекция и звук собираются воедино.","process.4.title":"Сдача и оптимизация","process.4.desc":"Готовые ролики во всех форматах с рекомендациями по публикации и хэштегам.",
-                "testimonials.label":"Отзывы","testimonials.title":"Что говорят наши <span class='highlight'>клиенты</span>","testimonials.subtitle":"Не верьте нам на слово — услышьте от брендов и авторов, которым мы помогли вырасти.",
-                "testimonials.1.quote":"\"ReelCraft полностью изменил наш Instagram. Наши ролики стабильно набирают от 500K+ просмотров вместо 2K. Качество и креатив на высшем уровне.\"","testimonials.1.name":"Сара Ким","testimonials.1.role":"Основатель, GlowUp Beauty",
-                "testimonials.2.quote":"\"Лучшая инвестиция в наш бренд. Команда понимает алгоритмы как никто другой. За 3 месяца количество подписчиков выросло втрое.\"","testimonials.2.name":"Маркус Ривера","testimonials.2.role":"CEO, FitNation Gym",
-                "testimonials.3.quote":"\"Профессионально, быстро и невероятно креативно. Каждый их ролик получает больше вовлеченности, чем месячный выпуск прошлого агентства. Игра стоит свеч.\"","testimonials.3.name":"Айша Лоран","testimonials.3.role":"Контент-мейкер, 1.2M подписчиков",
-                "pricing.label":"Тарифы","pricing.title":"Планы, которые <span class='highlight'>растут</span> с вами","pricing.subtitle":"Прозрачные цены, без скрытых платежей. Выберите подходящий план.","pricing.per.month":"/мес",
-                "pricing.starter.title":"Стартовый","pricing.starter.desc":"Для частных лиц и малых брендов","pricing.pro.title":"Профессионал","pricing.pro.desc":"Для серьезных авторов и растущих брендов","pricing.ent.title":"Корпоративный","pricing.ent.desc":"Полный контент для крупных брендов","pricing.popular.badge":"Популярный",
-                "pricing.f.4reels":"4 Reels в месяц","pricing.f.edit":"Профессиональный монтаж","pricing.f.audio":"Трендовая музыка","pricing.f.caption":"Описания и хэштеги","pricing.f.rev2":"2 раунда правок","pricing.f.motion":"Моушн-графика","pricing.f.strategy":"Контент-стратегия",
-                "pricing.f.8reels":"8 Reels в месяц","pricing.f.premium":"Премиум-монтаж и эффекты","pricing.f.motion2":"Кастомная моушн-графика","pricing.f.script":"Сценарий и раскадровка","pricing.f.unlimited":"Безлимитные правки","pricing.f.strategy2":"Сессия по стратегии","pricing.f.priority":"Приоритетная сдача",
-                "pricing.f.20reels":"20+ Reels в месяц","pricing.f.fullteam":"Полная продакшн-команда","pricing.f.advanced":"Продвинутая графика","pricing.f.director":"Личный креативный директор","pricing.f.multi":"Мультиплатформенная оптимизация","pricing.f.analytics":"Аналитика и отчеты","pricing.f.247":"Поддержка 24/7",
-                "pricing.btn.start":"Начать","pricing.btn.contact":"Связаться с отделом продаж",
-                "faq.label":"FAQ","faq.title":"Часто задаваемые <span class='highlight'>вопросы</span>",
-                "faq.1.q":"Сколько времени занимает создание одного Reels?","faq.1.a":"Обычно 3-5 рабочих дней от утверждения концепта до сдачи. Для тарифов Pro и Enterprise доступна срочная сдача за 48 часов.",
-                "faq.2.q":"Вы предоставляете исходники или только монтаж?","faq.2.a":"Предлагаем оба варианта. Вы можете прислать свои материалы, либо мы поможем со съемкой. На Enterprise — полная выездная съемка.",
-                "faq.3.q":"Для каких платформ вы оптимизируете?","faq.3.a":"Instagram Reels, TikTok и YouTube Shorts. Мы адаптируем форматы под каждую площадку для максимального охвата.",
-                "faq.4.q":"Можно ли внести правки после сдачи?","faq.4.a":"Конечно! Стартовый — 2 раунда правок, Pro и Enterprise — безлимитные правки до полного утверждения.",
-                "faq.5.q":"Гарантируете ли вы вирусный результат?","faq.5.a":"Гарантировать виральность невозможно, но наши ролики стабильно опережают средние показатели. Мы используем проверенные хуки и оптимизацию под алгоритмы.",
-                "cta.title":"Готовы стать <span class='highlight'>вирусным</span>?","cta.subtitle":"Давайте создадим цепляющие Reels, которые масштабируют ваш бренд. Запишитесь на бесплатную стратегическую консультацию.","cta.btn2":"Записаться на звонок",
-                "footer.desc":"Премиум-студия короткого видео. Помогаем брендам и авторам набирать просмотры с помощью цепляющих Reels.","footer.services.title":"Услуги","footer.services.1":"Создание Reels","footer.services.2":"Видеомонтаж","footer.services.3":"Моушн-графика","footer.services.4":"Контент-стратегия","footer.services.5":"Бренд-партнерства",
-                "footer.company.title":"Компания","footer.company.1":"О нас","footer.company.2":"Портфолио","footer.company.3":"Карьера","footer.company.4":"Блог","footer.company.5":"Контакты",
-                "footer.support.title":"Поддержка","footer.support.1":"Центр помощи","footer.support.2":"FAQ","footer.support.3":"Условия использования","footer.support.4":"Политика конфиденциальности","footer.support.5":"Политика возврата",
-                "footer.copyright":"&copy; 2026 ReelCraft Studio. Все права защищены.","footer.links.privacy":"Конфиденциальность","footer.links.terms":"Условия","footer.links.cookies":"Cookies"
-            },
-            hy: {
-                "nav.services":"Ծառայություններ","nav.portfolio":"Պորտֆոլիո","nav.process":"Գործընթաց","nav.pricing":"Գներ","nav.faq":"ՀՀՀ","nav.cta":"Սկսել <i class='fas fa-arrow-right'></i>",
-                "hero.badge":"Վստահում են 200+ բրենդներ և ստեղծագործողներ","hero.title":"Մենք ստեղծում ենք <span class='highlight'>գրավիչ</span> Reels-ներ, որոնք դառնում են վիրուսային","hero.subtitle":"Պրոֆեսիոնալ կարճ վիդեո կոնտենտ Instagram Reels-ի, TikTok-ի և YouTube Shorts-ի համար: Բարձրացրեք ներգրավվածությունը, աճեցրեք լսարանը և գրավեք ալգորիթմները:","hero.btn1":"Սկսել նախագիծը <i class='fas fa-arrow-right'></i>","hero.btn2":"<i class='fas fa-play'></i> Դիտել աշխատանքները",
-                "hero.stat1.desc":"Reels-ներ ստեղծված","hero.stat2.desc":"Ընդհանուր դիտումներ","hero.stat3.desc":"Բավարարված հաճախորդներ",
-                "phone.label":"▶ Ձեր հաջորդ վիրուսային Reels-ը","float.likes":"Լայքեր","float.views":"Դիտումներ",
-                "brands.title":"Մեզ վստահում են և համագործակցում",
-                "services.label":"Մեր ծառայությունները","services.title":"Ծառայություններ <span class='highlight'>վիրուսային աճի</span> համար","services.subtitle":"Գաղափարից մինչև վերջնական մոնտաժ՝ մենք ստանձնում ենք բարձրորակ կարճ վիդեոների ստեղծումը:",
-                "services.1.title":"Reels-ների ստեղծում","services.1.desc":"Instagram Reels-ների լրիվ ցիկլի ստեղծում՝ պրոֆեսիոնալ մոնտաժով, անցումներով, էֆեկտներով և թրենդային երաժշտությամբ:",
-                "services.2.title":"Սցենար և ստորագրություն","services.2.desc":"Տվյալների վրա հիմնված սցենարներ, որոնք գրավում են առաջին 3 վայրկյանում և պահում ուշադրությունը մինչև վերջ:",
-                "services.3.title":"Աուդիո և երաժշտություն","services.3.desc":"Թրենդային ձայների ընտրություն, կաստոմ ձայնային դիզայն, հնչյունավորում և լիցենզավորված երաժշտություն:",
-                "services.4.title":"Մոուշն-գրաֆիկա","services.4.desc":"Ցնցող տեքստային անիմացիաներ, կինետիկ տպագրություն, ֆիրմային վերնագրեր և վիզուալ էֆեկտներ:",
-                "services.5.title":"Կոնտենտ ռազմավարություն","services.5.desc":"Կոնտենտի պլանավորում, հրապարակման ժամանակացույց, հեշթեգների ընտրություն և ալգորիթմների օպտիմիզացիա:",
-                "services.6.title":"Բրենդային գործընկերություններ","services.6.desc":"Հովանավորվող հոլովակների ստեղծում, նատիվ գովազդ և branded կոնտենտ, որը բերում է իրական փոխակերպումներ:",
-                "portfolio.label":"Մեր աշխատանքները","portfolio.title":"Reels-ներ, որոնք <span class='highlight'>արդյունք են տալիս</span>","portfolio.subtitle":"Վիրուսային կոնտենտի ընտրանի՝ ստեղծված համաշխարհային բրենդների և ավթորների համար:",
-                "portfolio.1.title":"Ֆեշն բրենդի մեկնարկ","portfolio.1.stats":"2.1M դիտում • 180K լայք","portfolio.2.title":"Երաժշտի պրոմո","portfolio.2.stats":"4.5M դիտում • 520K լայք","portfolio.3.title":"Ռեստորանի արշավ","portfolio.3.stats":"890K դիտում • 67K լայք","portfolio.4.title":"Ֆիթնես մարտահրավեր","portfolio.4.stats":"3.2M դիտում • 290K լայք","portfolio.5.title":"Գեղեցկության ուսուցում","portfolio.5.stats":"1.8M դիտում • 145K լայք","portfolio.6.title":"Անշարժ գույքի շրջագայություն","portfolio.6.stats":"670K դիտում • 42K լայք","portfolio.7.title":"Տեխնոլոգիական արտադրանքի բացում","portfolio.7.stats":"1.5M դիտում • 98K լայք","portfolio.8.title":"Ճանապարհորդություն","portfolio.8.stats":"2.7M դիտում • 210K լայք",
-                "process.label":"Մեր գործընթացը","process.title":"Գաղափարից մինչև <span class='highlight'>վիրուսային</span>՝ 4 քայլով","process.subtitle":"Հարթեցված աշխատանքային գործընթաց՝ պրեմիում Reels-ները ժամանակին հանձնելու համար:",
-                "process.1.title":"Ճանաչում","process.1.desc":"Ուսումնասիրում ենք ձեր բրենդը, նպատակները, լսարանը և մշակում ռազմավարություն:","process.2.title":"Կոնցեպտ և սցենար","process.2.desc":"Մեր թիմը մշակում է գրավիչ հուքեր և սցենարներ ձեր ոլորտի համար:","process.3.title":"Նկարահանում և մոնտաժ","process.3.desc":"Պրոֆեսիոնալ մոնտաժ, գրաֆիկա, գունային ճշգրտում և ձայն հավաքվում են միասին:","process.4.title":"Հանձնում և օպտիմիզացիա","process.4.desc":"Պատրաստի հոլովակներ բոլոր ֆորմատներով՝ հրապարակման խորհուրդներով և հեշթեգներով:",
-                "testimonials.label":"Հաճախորդների կարծիքներ","testimonials.title":"Ինչ են ասում մեր <span class='highlight'>հաճախորդները</span>","testimonials.subtitle":"Մի վստահեք միայն մեզ՝ լսեք բրենդներից և ավթորներից, ում օգնել ենք աճել:",
-                "testimonials.1.quote":"\"ReelCraft-ը լիովին փոխեց մեր Instagram-ը: Մեր հոլովակները 2K-ից դարձան կայուն 500K+ դիտումներ: Որակն ու ստեղծագործական մոտեցումը անզուգական են:\"","testimonials.1.name":"Սառա Քիմ","testimonials.1.role":"Հիմնադիր, GlowUp Beauty",
-                "testimonials.2.quote":"\"Մեր բրենդի լավագույն ներդրումը: Թիմը հասկանում է ալգորիթմները ինչպես ոչ ոք: 3 ամսում հետևորդների թիվը եռապատկվեց:\"","testimonials.2.name":"Մարկուս Ռիվերա","testimonials.2.role":"CEO, FitNation Gym",
-                "testimonials.3.quote":"\"Պրոֆեսիոնալ, արագ և անհավանականորեն ստեղծագործ: Նրանց յուրաքանչյուր հոլովակ ավելի շատ ներգրավվածություն է ստանում, քան նախկին գործակալության ամսական թողարկումը:\"","testimonials.3.name":"Այշա Լորան","testimonials.3.role":"Կոնտենտ ստեղծող, 1.2M հետևորդ",
-                "pricing.label":"Գնացուցակ","pricing.title":"Պլաններ, որոնք <span class='highlight'>աճում</span> են ձեզ հետ","pricing.subtitle":"Թափանցիկ գներ, առանց թաքնված վճարների: Ընտրեք ձեզ հարմար պլանը:","pricing.per.month":"/ամիս",
-                "pricing.starter.title":"Մեկնարկային","pricing.starter.desc":"Ֆիզիկական անձանց և փոքր բրենդների համար","pricing.pro.title":"Պրոֆեսիոնալ","pricing.pro.desc":"Լուրջ ավթորների և աճող բրենդների համար","pricing.ent.title":"Ձեռնարկություն","pricing.ent.desc":"Մեծ բրենդների համար լրիվ կոնտենտ","pricing.popular.badge":"Ամենատարածված",
-                "pricing.f.4reels":"4 Reels ամսվա ընթացքում","pricing.f.edit":"Պրոֆեսիոնալ մոնտաժ","pricing.f.audio":"Թրենդային երաժշտություն","pricing.f.caption":"Նկարագրություն և հեշթեգներ","pricing.f.rev2":"2 շտկում","pricing.f.motion":"Մոուշն-գրաֆիկա","pricing.f.strategy":"Կոնտենտ ռազմավարություն",
-                "pricing.f.8reels":"8 Reels ամսվա ընթացքում","pricing.f.premium":"Պրեմիում մոնտաժ և էֆեկտներ","pricing.f.motion2":"Կաստոմ մոուշն-գրաֆիկա","pricing.f.script":"Սցենար և ստորագրություն","pricing.f.unlimited":"Անսահմանափակ շտկումներ","pricing.f.strategy2":"Ռազմավարության սեսիա","pricing.f.priority":"Առաջնահերթ հանձնում",
-                "pricing.f.20reels":"20+ Reels ամսվա ընթացքում","pricing.f.fullteam":"Լրիվ արտադրական թիմ","pricing.f.advanced":"Ընդլայնված գրաֆիկա","pricing.f.director":"Անձնական կրեատիվ տնօրեն","pricing.f.multi":"Բազմահարթակ օպտիմիզացիա","pricing.f.analytics":"Վերլուծություն և հաշվետվություններ","pricing.f.247":"24/7 աջակցություն",
-                "pricing.btn.start":"Սկսել","pricing.btn.contact":"Կապ հաստատել վաճառքի հետ",
-                "faq.label":"ՀՀՀ","faq.title":"Հաճախ տրվող <span class='highlight'>հարցեր</span>",
-                "faq.1.q":"Որքա՞ն ժամանակ է պահանջվում մեկ Reels-ի ստեղծման համար:","faq.1.a":"Սովորաբար 3-5 աշխատանքային օր գաղափարի հաստատումից մինչև հանձնում: Pro և Enterprise պլանների համար հասանելի է 48 ժամվա ընթացքում պատրաստում:",
-                "faq.2.q":"Տրամադրո՞ւմ եք հում նյութեր, թե միայն մոնտաժ:","faq.2.a":"Առաջարկում ենք երկու տարբերակ: Կարող եք ուղարկել ձեր նյութերը, կամ մենք կօգնենք նկարահանման հարցում: Enterprise-ի դեպքում՝ ամբողջական նկարահանում:",
-                "faq.3.q":"Ո՞ր հարթակների համար եք օպտիմիզացնում:","faq.3.a":"Instagram Reels, TikTok և YouTube Shorts: Մենք հարմարեցնում ենք ֆորմատները յուրաքանչյուր հարթակի համար՝ առավելագույն հասանելիության համար:",
-                "faq.4.q":"Հնարավո՞ր է շտկումներ կատարել հանձնումից հետո:","faq.4.a":"Իհարկե: Մեկնարկային՝ 2 շտկում, Pro և Enterprise՝ անսահմանափակ շտկումներ մինչև լիարժեք հաստատում:",
-                "faq.5.q":"Երաշխավորո՞ւմ եք վիրուսային արդյունք:","faq.5.a":"Վիրալությունը հնարավոր չէ 100% երաշխավորել, բայց մեր հոլովակները կայունորեն գերազանցում են միջին ցուցանիշները: Մենք օգտագործում ենք ստուգված հուքեր և ալգորիթմային օպտիմիզացիա:",
-                "cta.title":"Պատրա՞ստ եք դառնալ <span class='highlight'>վիրուսային</span>:","cta.subtitle":"Եկեք ստեղծենք գրավիչ Reels-ներ, որոնք կմեծացնեն ձեր բրենդը: Գրանցվեք անվճար ռազմավարական խորհրդատվության:","cta.btn2":"Գրանցվել զանգի",
-                "footer.desc":"Պրեմիում կարճ վիդեո ստուդիա: Օգնում ենք բրենդներին և ավթորներին հավաքել դիտումներ գրավիչ Reels-ների միջոցով:","footer.services.title":"Ծառայություններ","footer.services.1":"Reels-ների ստեղծում","footer.services.2":"Վիդեո մոնտաժ","footer.services.3":"Մոուշն-գրաֆիկա","footer.services.4":"Կոնտենտ ռազմավարություն","footer.services.5":"Բրենդային գործընկերություններ",
-                "footer.company.title":"Ընկերություն","footer.company.1":"Մեր մասին","footer.company.2":"Պորտֆոլիո","footer.company.3":"Աշխատանք","footer.company.4":"Բլոգ","footer.company.5":"Կապ",
-                "footer.support.title":"Աջակցություն","footer.support.1":"Օգնության կենտրոն","footer.support.2":"ՀՀՀ","footer.support.3":"Օգտագործման պայմաններ","footer.support.4":"Գաղտնիության քաղաքականություն","footer.support.5":"Վերադարձի քաղաքականություն",
-                "footer.copyright":"&copy; 2026 ReelCraft Studio: Բոլոր իրավունքները պաշտպանված են:","footer.links.privacy":"Գաղտնիություն","footer.links.terms":"Պայմաններ","footer.links.cookies":"Cookies"
-            }
-        };
-
-        // Language Switcher Logic
-        function setLanguage(lang) {
-            document.documentElement.lang = lang;
-            localStorage.setItem('reelcraft_lang', lang);
-            
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                const keys = key.split('.');
-                let val = translations[lang];
-                for (const k of keys) val = val?.[k];
-                if (val) el.innerHTML = val;
-            });
-
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === lang);
-            });
-        }
-
-        document.querySelectorAll('.lang-btn').forEach(btn => {
-            btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
-        });
-
-        // Init language
-        const savedLang = localStorage.getItem('reelcraft_lang') || 'en';
-        setLanguage(savedLang);
-
         // Navbar scroll effect
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
 
         // Mobile menu
         const hamburger = document.getElementById('hamburger');
@@ -801,23 +532,13 @@
             document.body.style.overflow = '';
         }
 
-        // FAQ accordion
-        document.querySelectorAll('.faq-question').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const item = btn.parentElement;
-                const isActive = item.classList.contains('active');
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-                if (!isActive) item.classList.add('active');
-            });
-        });
-
         // Scroll reveal animation
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-        // Smooth scroll
+        // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -826,17 +547,17 @@
             });
         });
 
-        // Counter animation
+        // Counter animation for hero stats
         function animateCounters() {
             document.querySelectorAll('.hero-stat h3').forEach(counter => {
                 const text = counter.textContent;
-                const hasPlus = text.includes('+'); const hasPercent = text.includes('%'); const hasM = text.includes('M');
+                const hasPlus = text.includes('+'); const hasPercent = text.includes('%'); const hasK = text.includes('K');
                 let target = parseFloat(text.replace(/[^0-9.]/g, ''));
-                let current = 0; const increment = target / 60;
+                let current = 0; const increment = target / 50;
                 const timer = setInterval(() => {
                     current += increment;
                     if (current >= target) { current = target; clearInterval(timer); }
-                    let display = hasM ? (current >= target ? current.toFixed(0) : current.toFixed(1)) + 'M' : Math.floor(current);
+                    let display = hasK ? Math.floor(current) + 'K' : Math.floor(current);
                     if (hasPlus) display += '+'; if (hasPercent) display += '%';
                     counter.textContent = display;
                 }, 30);
